@@ -36,12 +36,13 @@
   width: 277px;
 }
 
-.leftList div.item {
+.leftList div.item{
   width: 277px;
   height: 44px;
-  background: #DEDEDE;
-  margin-top: 1px;
   border-radius: 3px;
+}
+.leftList div.item:hover {
+  background: #DEDEDE;
 }
 .leftList div.user {
   height: 66px;

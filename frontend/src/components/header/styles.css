@@ -1,0 +1,40 @@
+.headerBar {
+  position: absolute;
+  height: 58px;
+  width: 100%;
+  left: 0;
+  top: 0;
+  background: #ffffff;
+}
+
+.search-box {
+  position: absolute;
+  height: 40px;
+  width: 442px;
+  top: 9px;
+  left: 135px;
+  border-radius: 5px;
+  border: 0.5px solid rgba(0, 0, 0, 0.4);
+  box-sizing: border-box;
+  background: #F9FAFA;
+}
+
+.btnHeader {
+  width: 122px;
+  height: 40px;
+  right: 193px;
+  top: 9px;
+  border: 0px;
+}
+
+.imgMask {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  background: #C4C4C4;
+  top: 12px;
+  right: 69px;
+  border-radius: 25px;
+  text-align: center;
+  align-content: center;
+}

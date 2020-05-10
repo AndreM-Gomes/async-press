@@ -16,6 +16,18 @@ export default class Home extends Component {
           <div className='item'>
 
           </div>
+          <div className='item'>
+
+          </div>
+          <div className='item'>
+
+          </div>
+          <div className='item'>
+
+          </div>
+          <div className='item'>
+
+          </div>
         </section>
         <div className='postList'>
           <div className='post post_1'>

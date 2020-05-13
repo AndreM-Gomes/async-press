@@ -1,7 +1,5 @@
 const express = require('express')
 const app = express()
-const userService = require('./services/usersService')
-const postsService = require('./services/postsService')
+const { User } = require('./models')
 
-require('./routes/posts')(app,userService(database))
-require('./routes/users')(app,postsService(database))
+const userService = require('./services/userService')(User)

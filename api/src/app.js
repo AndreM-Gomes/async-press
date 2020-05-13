@@ -1,7 +1,4 @@
 const express = require('express')
 const app = express()
-const userService = require('./services/usersService')
-const postsService = require('./services/postsService')
-
-require('./routes/posts')(app,userService(database))
-require('./routes/users')(app,postsService(database))
+const { User } = require('./models')
+User.create({name: 'Andre', username: 'adionildo', email: 'andre.montero702@gmail.com', password: 'root'})

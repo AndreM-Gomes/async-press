@@ -17,10 +17,14 @@
   },
   "homepage": "https://github.com/andrem-gomes/blog.js#readme",
   "dependencies": {
+<<<<<<< HEAD
     "argon2": "^0.26.2",
     "express": "^4.17.1",
     "express-jwt": "^5.3.3",
     "jsonwebtoken": "^8.5.1",
+=======
+    "express": "^4.17.1",
+>>>>>>> 3b97bdd36508f6c485daa0f2cec4ad1ee9f5d524
     "mysql2": "^2.1.0",
     "sequelize": "^5.21.8",
     "sequelize-cli": "^5.5.1"

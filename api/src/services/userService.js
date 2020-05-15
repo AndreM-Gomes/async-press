@@ -1,17 +1,20 @@
 const argon2 = require('argon2')
 const jwt = require('jsonwebtoken')
-const crypto = require('crypto')
 
 module.exports = ( userModel ) => {
   const signUp = async ( user ) => {
     const passwordHashed = await argon2.hash(user.password)
 
-    await userModel.create({
+    const userRecord = await userModel.create({
       name: user.name,
       username: user.username,
       email: user.email,
       password: passwordHashed
     })
+    return {
+      username: userRecord.username,
+      token: generateJWT(userRecord)
+    }
   }
   const login = async ( username, password) => {
     const userRecord = await userModel.findOne({ where: {title: username}})

@@ -17,7 +17,7 @@ module.exports = ( userModel ) => {
     }
   }
   const login = async ( username, password) => {
-    const userRecord = await userModel.findOne({ where: {title: username}})
+    const userRecord = await userModel.findOne({ where: {username: username}})
     const correctPassword = await argon2.verify(userRecord.password, password)
     if(!correctPassword) throw new Error('Incorrect username or password')
     return {
@@ -36,7 +36,7 @@ module.exports = ( userModel ) => {
     },'MySuP3R_z3kr3t.', { expiresIn: '6h'})
   }
   const findUserById = async ( id ) => {
-    return await User.findByPK(id)
+    return await userModel.findByPk(id)
   }
   return {
     signUp,

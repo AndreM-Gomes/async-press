@@ -1,5 +1,6 @@
 const bodyParser = require('body-parser')
 const { User } = require('./models')
+const jwt = require('jsonwebtoken')
 
 module.exports = class CoreContainner{
   constructor(app, port){
@@ -10,9 +11,14 @@ module.exports = class CoreContainner{
     console.log('Starting server...')
     this.app.use(bodyParser.json())
 
-    require('./controllers/userController')(this.app, User)
+    const UserService = require('./services/userService')(User)
 
-    this.app.listen(this.port,async() => {
+
+    const authUser = require('./middlewares/attachUser')(UserService,jwt)
+    
+    require('./controllers/userController')(this.app, UserService, authUser)
+
+    this.app.listen(this.port, async() => {
       console.log(`Server started at http://localhost:${this.port}`)
     })
   }

@@ -1,14 +1,15 @@
 import React from 'react'
 
+
 import './styles.css'
 
 const Header = () => {
   return  (
     <div className="headerBar">
-      <input className="search-box" value="Search..."/>
+      <input className="search-box" placeholder='Search...'/>
 
-      <button className='button btnHeader'>Write Post</button>
-      <div className='imgMask'>img</div>
+      <button className='main btnHeader'>Write a post</button>
+      <img src="user.jpeg" alt="" className="imgMask"/>
     </div>
   )
 }

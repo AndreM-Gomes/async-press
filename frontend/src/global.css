@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background: #F9FAFA;
+}
+
+button {
+  border-radius: 3px;
+  border: 0;
+}
+
+.main {
+  color: #FFFFFF;
+  background: #3B49DF;
+}
+
+.imgMask {
+  border-radius: 50%;
+}
+
+.card {
+  background: #FFFFFF;
+  border-radius: 3px;
+}

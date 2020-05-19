@@ -1,51 +1,230 @@
+
+.container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 60px 1fr;
+  grid-gap: 30px 15px;
+}
+
 .postList {
-  position: absolute;
-  top: 123px;
-  left: 360px;
+  grid-column: 2;
+  grid-row: 2;
+  margin-top: 50px;
 }
 
-.postList div.post {
-  position: relative;
-  background: #FFFFFF;
+.postList .post {
   box-shadow: 0px 1px 4px rgba(0,0,0,0.25);
-  border-radius: 3px;
-  width: 657px;
-  height: 180px;
-  margin-top: 10px ;
+  width: 700px;
+  min-height: 180px ;
+  margin: 10px 10px;
+  box-sizing: content-box;
 }
 
-.postList div.post_1{
-  width: 657px;
-  height: 523px;
-  margin-top: 0px;
+.postList .post_1{
+  width: 700px;
+  box-sizing: content-box;
 }
 
-.postList div.post div.mask {
-  position: absolute;
-  width: 657px;
+.postList .post_1 .post-content{
+  width: 100%;
+  padding: 5px 30px;
+}
+
+.postList .post .mask {
+
+  width: 700px;
   height: 277px;
   background: #DEDEDE;
   border-radius: 3px, 0px;
 }
 
+.postList .post h1{
+  font-family: 'Open Sans';
+  color: #000000;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.post-footer {
+  display: flex;
+  position: relative;
+  bottom: 0px;
+  width: 100%;
+  height: 40px;
+}
+
+.post button{
+  width: 60px;
+  height: 30px;
+  color: #000000;
+  background: #b5bdc4b6;
+  transition: 0.2s;
+} 
+
+.post button:hover {
+  background: #b5bdc4;
+}
 
 .leftList {
-  position: absolute;
-  top: 73px;
-  left: 53px;
-  width: 277px;
+  grid-column: 1;
+  grid-row: 2;
+  padding-left: 3vw ;
+  width: 300px;
 }
 
-.leftList div.item{
-  width: 277px;
-  height: 44px;
+
+.leftList .item{
+  display: flex;
+  width: 300px;
   border-radius: 3px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 500;
+  padding: 10px 17px;
+  list-style: none;
+  line-height: 20.7px;
 }
-.leftList div.item:hover {
+  
+.leftList .item:hover {
+  background: rgba(222, 222, 222, 0.616);
+}
+
+.leftList .user {
+  padding-top: 10px;
+  height: 66px;
+  margin-bottom: 10px;
+}
+
+.leftList strong {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.leftList .user p {
+  font-size: 12px ;
+  font-weight: lighter;
+  line-height: 27px;
+}
+
+.leftList .imgMask {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.tags {
+  margin-top: 10px;
+  width: 300px;
+  height: 400px;
+  overflow-y: scroll;
+}
+
+.tags h5 {
+  padding: 15px 0px ;
+}
+
+.tag-item {
+  width: 277px;
+  padding: 10px;
+  list-style: none;
+  transition: 0.2s;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #202428;
+}
+
+.tag-item:hover {
   background: #DEDEDE;
 }
-.leftList div.user {
-  height: 66px;
-  margin-bottom: 15px;
+
+.feed-bar { 
+  grid-row: 2;
+  grid-column: 2;
 }
 
+.feed-bar ul {
+  display: flex;
+  justify-content: space-around;
+  margin: 0px 60px;
+  list-style: none;
+  font-family:  Tahoma ;
+}
+
+.feed-bar li {
+  font-size: 20px;
+  color: grey;
+}
+
+.feed-bar a {
+  display: block;
+  text-decoration: none;
+}
+
+.feed-bar .feed-button {
+  list-style: none;
+  text-align: center;
+  border-radius: 3px;
+  transition: 0.2s;
+  padding: 3px 7px;
+  font-family:  Tahoma ;
+  font-size: 20px;
+  font-weight: 500 ;
+  color:   rgba(104, 112, 241);
+  display: block;
+}
+
+.feed-bar .feed-button.selected {
+  box-shadow: 4px 6px  rgba(104, 112, 241) ;
+  background-color: #D5DCFE;
+  color: black;
+}
+
+.feed-bar .feed-button:hover {
+  background: rgba(104, 112, 241) ;
+  box-shadow: 4px 6px  #D5DCFE;
+  color: white;
+}
+
+.g-image {
+  grid-column: 3;
+  grid-row: 2 ;
+  width: 300px;
+}
+
+.stories {
+  margin-top: 250px;
+  grid-column: 3;
+  width: 300px;
+  line-height: 20.7px;
+}
+
+.stories h5 {
+  padding: 15px 0px ;
+}
+
+
+.storie-item {
+  width: 300px;
+  transition: 0.2s;
+  font-family: 'Roboto', sans-serif;
+  font-size: 17px;
+  padding: 10px 30px;
+  font-weight: 500;
+  color: #202428;
+}
+
+.storie-item:hover {
+  background: #DEDEDE;
+}
+
+
+.stories button{
+  padding: 0px 20px ;
+  width: 300px;
+  margin-top: 10px;
+}
+
+.secundary {
+  background: #ffffff;
+  color: #000000;
+}

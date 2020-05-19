@@ -1,7 +1,11 @@
 const express = require('express')
 const app = express()
-const userService = require('./services/usersService')
-const postsService = require('./services/postsService')
 
-require('./routes/posts')(app,userService(database))
-require('./routes/users')(app,postsService(database))
+const CoreContainner = require('./coreContainner')
+const core = new CoreContainner(app, 3000)
+
+core.start()
+  .catch(e => {
+    console.trace()
+    console.log(`Unhandled exception -> ${e}`)
+  })

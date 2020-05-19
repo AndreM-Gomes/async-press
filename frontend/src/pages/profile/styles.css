@@ -1,0 +1,62 @@
+.profile {
+  width: 80vw;
+  height: 40vh;
+  grid-row: 2;
+  grid-column: 2;
+  box-shadow: 5px 7px black ;
+  border: solid 2px black;
+  padding:50px ;
+  box-sizing: content-box;
+  display: flex;
+}
+
+.profile h1 {
+  margin-right: 50px;
+  font-size: 50px;
+  line-height: 70px;
+}
+
+.profile button {
+  margin: 10px 0px;
+  width: 200px;
+  font-size: 22px;
+}
+
+.profile p{
+  color:  #504f4f;
+  line-height: 30px;
+  padding: 20px;
+}
+
+.social-links {
+  width: 300px;
+  height: 50px;
+}
+
+.bar {
+  align-self: center;
+  width: 3px;
+  height: 100px;
+  background: #DCDED4;
+  margin: 0px 30px;
+}
+
+.since {
+  width: 300px;
+  height: 200px;  
+  padding: 100px 0px;
+  line-height: 35px;
+}
+
+.profile .imgMask {
+  align-self: center;
+  width: 300px;
+  height: 300px;
+  border: solid 5px #DCDED4;
+}
+
+.user-info {
+  display: block;
+  padding: 20px;
+}
+

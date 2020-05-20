@@ -1,11 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 import './styles.css'
+import Header from '../../components/header'
 
-export default class Profile extends Component{
-  render() {
+export default function Profile(){
+  
     return(
       <div className="container">
+        <Header/>
           <div className='card profile'>
             <img src='user.jpeg' className='imgMask' alt='user'/>
             <div className='user-info'>
@@ -22,5 +24,5 @@ export default class Profile extends Component{
           </div>  
       </div>
     )
-  }
+  
 }

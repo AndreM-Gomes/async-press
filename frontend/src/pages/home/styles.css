@@ -3,7 +3,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 60px 1fr;
-  grid-gap: 30px 15px;
+  grid-gap: 30px 1em;
+  justify-items: center;
 }
 
 .postList {
@@ -13,15 +14,13 @@
 }
 
 .postList .post {
-  box-shadow: 0px 1px 4px rgba(0,0,0,0.25);
-  width: 700px;
+  width: 650px;
   min-height: 180px ;
-  margin: 10px 10px;
+  margin-bottom: 10px;
   box-sizing: content-box;
 }
 
 .postList .post_1{
-  width: 700px;
   box-sizing: content-box;
 }
 
@@ -31,8 +30,6 @@
 }
 
 .postList .post .mask {
-
-  width: 700px;
   height: 277px;
   background: #DEDEDE;
   border-radius: 3px, 0px;
@@ -68,14 +65,12 @@
 .leftList {
   grid-column: 1;
   grid-row: 2;
-  padding-left: 3vw ;
-  width: 300px;
 }
 
 
 .leftList .item{
   display: flex;
-  width: 300px;
+  width: 277px;
   border-radius: 3px;
   font-family: 'Open Sans', sans-serif;
   font-weight: 500;
@@ -113,7 +108,6 @@
 
 .tags {
   margin-top: 10px;
-  width: 300px;
   height: 400px;
   overflow-y: scroll;
 }
@@ -123,7 +117,7 @@
 }
 
 .tag-item {
-  width: 277px;
+  width: 250px;
   padding: 10px;
   list-style: none;
   transition: 0.2s;
@@ -188,13 +182,13 @@
 .g-image {
   grid-column: 3;
   grid-row: 2 ;
-  width: 300px;
+  width: 277px;
 }
 
 .stories {
   margin-top: 250px;
   grid-column: 3;
-  width: 300px;
+  width: 277px;
   line-height: 20.7px;
 }
 
@@ -204,13 +198,17 @@
 
 
 .storie-item {
-  width: 300px;
+  width: 277px;
   transition: 0.2s;
   font-family: 'Roboto', sans-serif;
   font-size: 17px;
   padding: 10px 30px;
   font-weight: 500;
   color: #202428;
+}
+
+.storie-item li {
+  word-break: break-all;
 }
 
 .storie-item:hover {
@@ -220,8 +218,9 @@
 
 .stories button{
   padding: 0px 20px ;
-  width: 300px;
-  margin-top: 10px;
+  width: 277px;
+  height: 40px;
+  margin-top: 15px;
 }
 
 .secundary {

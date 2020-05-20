@@ -1,11 +1,13 @@
 import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
 
 import './styles.css'
+import Header from '../../components/header'
 
-export default class Register extends Component{
-  render(){
+export default function Register(){
     return (
       <div className="container">
+        <Header/>
         <div className="card register">
             <form>
               <input placeholder='Name'/>
@@ -16,9 +18,9 @@ export default class Register extends Component{
               </div>
               <button className='main' type='submit' value='Cadastrar'>Cadastrar</button>
             </form>
-            <a>Fazer Login</a>
+           <Link to='/login' className='link'>Fazer Login</Link>
         </div>
       </div>
     )
-  }
+
 }

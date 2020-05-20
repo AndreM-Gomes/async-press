@@ -1,16 +1,16 @@
-import React, {Component} from 'react';
-import ReactDOM from 'react-dom'
+import React from 'react';
+import Header from '../../components/header'
 
 import './styles.css';
 
-export default class Home extends Component {
-  componentDidMount(props) {
+export default function Home() {
+    function barClick() {
 
-  }
+    }
 
-  render() {
     return(
       <div className='container'>
+        <Header/>
         <section className='leftList'>
           <ul>
             <li className='item user'>
@@ -68,14 +68,14 @@ export default class Home extends Component {
 
         <nav className='feed-bar'>
             <ul>
-              <li ><a className="feed-button selected" id='1' href='#' onClick={this.barClick}>FEED</a></li>
+              <li ><a className="feed-button selected" id='1' href='#' >FEED</a></li>
               <li>|</li> 
-              <li><a className="feed-button" href='#' id='2' onClick={this.barClick}>WEEK</a></li>
-              <li><a className="feed-button" href='#' id='3' onClick={this.barClick}>MONTH</a></li>
-              <li><a className="feed-button" href='#' id='4' onClick={this.barClick}>YEAR</a></li>
-              <li><a className="feed-button" href='#' id='5' onClick={this.barClick}>INFINITY</a></li>
+              <li><a className="feed-button" href='#' id='2' >WEEK</a></li>
+              <li><a className="feed-button" href='#' id='3' >MONTH</a></li>
+              <li><a className="feed-button" href='#' id='4' >YEAR</a></li>
+              <li><a className="feed-button" href='#' id='5' >INFINITY</a></li>
               <li>|</li>
-              <li><a className="feed-button" href='#' id='6' onClick={this.barClick}>LATEST</a></li>
+              <li><a className="feed-button" href='#' id='6' >LATEST</a></li>
             </ul>
         </nav>
         <div className='postList'>
@@ -121,5 +121,4 @@ export default class Home extends Component {
         </section>
       </div>
     )
-  }
 }

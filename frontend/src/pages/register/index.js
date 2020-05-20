@@ -5,7 +5,7 @@ export default class Register extends Component{
   render(){
     return (
       <div className="container">
-        <div className="card login">
+        <div className="card register">
             <form>
               <input placeholder='Name'/>
               <input type='email' placeholder='e-mail'/>

@@ -1,5 +1,4 @@
-import React, { Component } from 'react'
-import {Link} from 'react-router-dom'
+import React from 'react'
 
 import './styles.css'
 
@@ -12,7 +11,7 @@ export default function Login() {
               <input type='password' placeholder='Senha'/>
               <button className='main' type='submit' value='Cadastrar'>Login</button>
             </form>
-            >Me cadastar
+            <a>Me cadastar</a> 
         </div>
       </div>
     )

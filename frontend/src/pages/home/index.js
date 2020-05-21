@@ -1,12 +1,18 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Header from '../../components/header'
 
+
 import './styles.css';
+import PostServices from '../../services/PostsServices'
 
 export default function Home() {
-    function barClick() {
+  const [postList, setPostList] = useState([])
+  const service = new PostServices()
 
-    }
+  useEffect(()=>{
+    service.getPosts().then(response =>{setPostList(response.posts)})
+  })
+
 
     return(
       <div className='container'>
@@ -68,41 +74,43 @@ export default function Home() {
 
         <nav className='feed-bar'>
             <ul>
-              <li ><a className="feed-button selected" id='1' href='#' >FEED</a></li>
+              <li ><div className="feed-button selected" id='1' href='#' >FEED</div></li>
               <li>|</li> 
-              <li><a className="feed-button" href='#' id='2' >WEEK</a></li>
-              <li><a className="feed-button" href='#' id='3' >MONTH</a></li>
-              <li><a className="feed-button" href='#' id='4' >YEAR</a></li>
-              <li><a className="feed-button" href='#' id='5' >INFINITY</a></li>
+              <li><div className="feed-button" href='#' id='2' >WEEK</div></li>
+              <li><div className="feed-button" href='#' id='3' >MONTH</div></li>
+              <li><div className="feed-button" href='#' id='4' >YEAR</div></li>
+              <li><div className="feed-button" href='#' id='5' >INFINITY</div></li>
               <li>|</li>
-              <li><a className="feed-button" href='#' id='6' >LATEST</a></li>
+              <li><div className="feed-button" href='#' id='6' >LATEST</div></li>
             </ul>
         </nav>
         <div className='postList'>
-          <div className='card post post_1'>
-            <div className='mask'>
-
-            </div>
+          {postList.filter(post => post.index === 0).map(postFil =>(
+            <div className='card post post_1'>
+              <div className='mask'>
+              </div>
               <div className='post-content'>
-                  <h1>Titulo da primeira publicação do Feed</h1>
+              <h1>{postFil.title}</h1>
               </div>
               <div className='post-footer'>
                 <p>Comments</p>
                 <button>Save</button>
               </div>
             </div>
-
+          ))}
+          {postList.filter(post => post.index !== 0).map(postFil => (
             <div className='card post'>
-              
+              <div className='post-content'>
+                <h1>{postFil.title}</h1>
+              </div>
+              <div className='post-footer'>
+                <p>Comments</p>
+                <button>Save</button>
+              </div>
             </div>
-            <div className='card post'>
-              
-            </div>
-            <div className='card post'>
-              
-            </div>
-          </div>
-          <img src="https://dev-to-uploads.s3.amazonaws.com/i/got2x8dx1fu5xh00wsn8.png" alt="" className="g-image"/>
+          ))}
+        </div>
+        <img src="https://dev-to-uploads.s3.amazonaws.com/i/got2x8dx1fu5xh00wsn8.png" alt="" className="g-image"/>
         <section className="stories">
           <h4>Stories</h4>
            <ul>

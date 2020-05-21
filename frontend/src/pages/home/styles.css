@@ -24,7 +24,7 @@
   box-sizing: content-box;
 }
 
-.postList .post_1 .post-content{
+.postList .post .post-content{
   width: 100%;
   padding: 5px 30px;
 }

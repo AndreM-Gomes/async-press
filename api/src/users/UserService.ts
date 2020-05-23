@@ -1,4 +1,4 @@
-import { Connection } from 'typeorm';
+import { Connection, getConnection } from 'typeorm';
 import argon2 from 'argon2'
 import jsonwebtoken from 'jsonwebtoken'
 import { UserEntity } from '../entity/UserEntity'
@@ -6,10 +6,10 @@ import { UserEntity } from '../entity/UserEntity'
 
 export class UserService{
   private connection: Connection
-  constructor(connection: Connection){
-    this.connection = connection
+  constructor(){
+    this.connection = getConnection()
   }
-  async signUp({id,name,password,email,username}: UserEntity){
+  async signUp({name,password,email,username}: UserEntity){
     const passwordHashed = await argon2.hash(password)
 
     const user = new UserEntity();
@@ -19,7 +19,7 @@ export class UserService{
     user.username = username
 
     await this.connection.manager.save<UserEntity>(user)
-      const userRecord = await this.connection.manager.findOne(UserEntity,id)
+      const userRecord = await this.connection.manager.findOne(UserEntity,{where:{username}})
     return{
       username: userRecord.username,
       token: generateJWT(userRecord)
@@ -28,17 +28,19 @@ export class UserService{
   async login(username: string, password: string){
     const userRepository = this.connection.getRepository<UserEntity>(UserEntity)
 
-    const userRecord = await userRepository.findOne({where: {username, password}})
+    const userRecord = await userRepository.findOne({where: {username}})
 
     const correctPassword = await argon2.verify(userRecord.password, password)
 
     if(!correctPassword) throw new Error('Incorrect username or password')
     return {
-      user: {
-        username: userRecord.username,
-        token: generateJWT(userRecord)
-      }
+      username: userRecord.username,
+      token: generateJWT(userRecord)
     }
+  }
+  async findUserById(id: number): Promise<UserEntity>{
+  const user = await this.connection.manager.findOne(UserEntity,{where:{id}})
+    return user
   }
 }
 const generateJWT = (user: UserEntity) => {
@@ -47,5 +49,5 @@ const generateJWT = (user: UserEntity) => {
       _id: user.id,
       username: user.username
     }
-  },'MySuP3R_z3kr3t.', { expiresIn: '6h'})
+  },'hello', { expiresIn: '6h'})
 }

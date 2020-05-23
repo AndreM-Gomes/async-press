@@ -1,4 +1,5 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import { PostEntity } from './PostEntity';
+import {Entity, PrimaryGeneratedColumn, Column, OneToMany} from "typeorm";
 
 @Entity()
 export class UserEntity {
@@ -18,4 +19,6 @@ export class UserEntity {
     @Column()
     password: string
 
+    @OneToMany(type => PostEntity, post => post.user)
+    posts: Promise<PostEntity>[]
 }

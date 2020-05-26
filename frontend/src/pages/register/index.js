@@ -1,4 +1,31 @@
+<<<<<<< HEAD
 import React from 'react'
+=======
+import React, {Component} from 'react'
+<<<<<<< HEAD
+
+
+export default class Register extends Component{
+  render(){
+    return (
+      <div className="container">
+        <div className="card login">
+            <form>
+              <input placeholder='Name'/>
+              <input type='email' placeholder='e-mail'/>
+              <div> 
+                <input type='password' placeholder='Senha'/>
+                <input type='password' placeholder='Senha'/>
+              </div>
+              <button className='main' type='submit' value='Cadastrar'>Login</button>
+            </form>
+            Fazer Login
+        </div>
+      </div>
+    )
+  }
+=======
+>>>>>>> master
 import {Link} from 'react-router-dom'
 
 import './styles.css'
@@ -26,4 +53,5 @@ export default function Register(){
       </div>
     )
 
+>>>>>>> a3f79090307b485c2f0ec279a4c281648ed75a80
 }

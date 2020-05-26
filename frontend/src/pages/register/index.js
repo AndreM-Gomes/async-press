@@ -10,7 +10,10 @@ export default function Register(){
         <Header/>
         <div className="card register">
             <form>
-              <input placeholder='Name'/>
+              <div className='input-group'>
+                <input placeholder='Name'/>
+                <input type="text" name="username" placeholder='userName'/>
+              </div>
               <input type='email' placeholder='e-mail'/>
               <div className='input-group'> 
                 <input type='password' placeholder='Senha'/>

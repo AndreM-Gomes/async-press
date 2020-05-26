@@ -6,6 +6,8 @@ export default class PostsService{
     const response = await this.post()
     return response
   }
+  
+  
 
    post() {
     return {

@@ -1,0 +1,24 @@
+.tags {
+  margin-top: 320px;
+  height: 400px;
+  overflow-y: scroll;
+}
+
+.tags h5 {
+  padding: 15px 0px ;
+}
+
+.tag-item {
+  width: 250px;
+  padding: 10px;
+  list-style: none;
+  transition: 0.2s;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #202428;
+}
+
+.tag-item:hover {
+  background: #DEDEDE;
+}

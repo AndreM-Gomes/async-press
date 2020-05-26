@@ -7,11 +7,13 @@ import Login from './pages/login'
 import Register from './pages/register'
 import Profile from './pages/profile'
 import Dashboard from './pages/dashboard'
+import Sidebar from './components/sidebar'
 
 export default function Routes(){
   return (
     <BrowserRouter>
       <Switch>
+        <Route path='/sidebar' exact component={Sidebar}/>
         <Route path='/' exact component={Home}/>
         <Route path='/write' component={Write}/>
         <Route path='/login' component={Login}/>

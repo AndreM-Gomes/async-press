@@ -3,20 +3,29 @@ import Header from '../../components/header'
 
 
 import './styles.css';
-import PostServices from '../../services/PostsServices'
+import PostServices from '../../services/posts/PostsServices'
+import TagsServices from '../../services/TagsService'
+import Sidebar from '../../components/sidebar';
 
 export default function Home() {
   const [postList, setPostList] = useState([])
-  const service = new PostServices()
-
+  const [hashList, setHashList] = useState([])
+  const postservice = new PostServices()
+  const tagservice = new TagsServices()
   useEffect(()=>{
-    service.getPosts().then(response =>{setPostList(response.posts)})
+    postservice.getPosts().then(response =>{setPostList(response.posts)})
   })
+
+  /*useEffect(()=>{
+    tagservice.getHash().then(response =>{setHashList(response.hashs)})
+  })*/
 
 
     return(
+      
       <div className='container'>
         <Header/>
+        <Sidebar/>
         <section className='leftList'>
           <ul>
             <li className='item user'>
@@ -33,43 +42,6 @@ export default function Home() {
             <li className='item'>Tags</li>
             <li className='item'>more...</li>
           </ul>
-        
-          <section className='tags' >
-            <h5>My Tags</h5>
-            <ul>
-              <li className="tag-item">#javascript</li>
-              <li className="tag-item">#react</li>
-              <li className="tag-item">#python</li>
-              <li className="tag-item">#css</li>
-              <li className="tag-item">#devops</li>
-              <li className="tag-item">#opensource</li>
-              <li className="tag-item">#linux</li>
-              <li className="tag-item">#docker</li>
-              <li className="tag-item">#java</li>
-              <li className="tag-item">#security</li>
-              <li className="tag-item">#git</li>
-              <li className="tag-item">#ruby</li>
-              <li className="tag-item">#rails</li>
-              <li className="tag-item">#vscode</li>
-              <li className="tag-item">#sql</li>
-              <li className="tag-item">#ubuntu</li>
-              <li className="tag-item">#npm</li>
-              <li className="tag-item">#bash</li>
-            </ul>
-            <h5>Other Polular Tags</h5>
-            <ul>
-              <li className="tag-item"></li>
-              <li className="tag-item"></li>
-              <li className="tag-item"></li>
-              <li className="tag-item"></li>
-              <li className="tag-item"></li>
-              <li className="tag-item"></li>
-              <li className="tag-item"></li>
-              <li className="tag-item"></li>
-              <li className="tag-item"></li>
-              <li className="tag-item"></li>
-            </ul>
-          </section>
         </section>
 
         <nav className='feed-bar'>

@@ -9,18 +9,30 @@ export class PostEntity {
   @PrimaryGeneratedColumn()
   id: number
 
-  @Column()
+  @Column({
+    type: 'varchar',
+    nullable: false,
+    length: 75
+  })
   title: string
 
-  @Column()
+  @Column({
+    type: 'tinyint',
+    nullable: false
+  })
   minsToRead: number
 
-  @Column('text')
+  @Column({
+    type: 'text',
+    nullable: false
+  })
   content: string
 
+  @Index()
   @Column()
   likesNumber: number
 
+  @Index()
   @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP(6)'})
   createdAt: Date
 

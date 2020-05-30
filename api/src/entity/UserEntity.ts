@@ -16,9 +16,9 @@ export class UserEntity {
     @Column()
     email: string
 
-    @Column()
+    @Column({select: false})
     password: string
 
     @OneToMany(type => PostEntity, post => post.user)
-    posts: Promise<PostEntity>[]
+    posts: PostEntity[]
 }

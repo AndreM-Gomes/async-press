@@ -20,7 +20,6 @@ export class UserController{
         return res.json(e).status(500).end()
       }
     })
-
     this.app.post('/user/login', async (req: express.Request, res: express.Response) => {
       try{
         const {username, password} = req.body
@@ -30,9 +29,6 @@ export class UserController{
       }catch(e){
         return res.json(e).status(401).end()
       }
-    })
-    this.app.get('/user/login', async (req: express.Request, res: express.Response) => {
-      res.json({ok: true}).end()
     })
   }
 }

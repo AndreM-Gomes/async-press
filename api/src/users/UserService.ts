@@ -49,5 +49,5 @@ const generateJWT = (user: UserEntity) => {
       _id: user.id,
       username: user.username
     }
-  },'hello', { expiresIn: '6h'})
+  },'hello', { expiresIn: '1h'})
 }

@@ -11,11 +11,15 @@ export class UserService {
     private userRepository: Repository<UserEntity>
     ){}
 
-    async findOne(username: string){
+    async findCredentialsByUsername(username: string){
       return this.userRepository.findOne({
         where: {username},
         select: ['id','username','password']
       })
+    }
+
+    async findById(id: number){
+      return this.userRepository.findOne({where:{id}})
     }
 
     async saveUser(user: UserEntity) {

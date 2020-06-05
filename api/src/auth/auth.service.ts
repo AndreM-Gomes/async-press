@@ -12,7 +12,7 @@ export class AuthService {
     ){}
 
   async validateUser(credentials: UserCredentials){
-    const user = await this.userService.findOne(credentials.username)
+    const user = await this.userService.findCredentialsByUsername(credentials.username)
     if(user && await argon2.verify(user.password, credentials.password)){
       const {id} = user
       return id
@@ -20,9 +20,9 @@ export class AuthService {
     return null
   }
 
-  async login(credentials: UserCredentials){
-    const payload = { credentials }
-
+  async login(credentials){
+    console.log(credentials)
+    const payload = {credentials} 
     return {
       accessToken: this.jwtService.sign(payload)
     }

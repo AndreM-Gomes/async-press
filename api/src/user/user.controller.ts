@@ -1,10 +1,9 @@
-import { JwtAuthGuard } from './../auth/jwt-auth.guard';
-import { LocalAuthGuard } from './../auth/local-auth.guard';
 import { AuthGuard } from '@nestjs/passport';
 import { UserEntity } from './UserEntity';
 import { UserService } from './user.service';
 import { Controller, Get, Body, Post, UseGuards, Request } from '@nestjs/common';
 import { UserCredentials } from './UserCredentials';
+import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 
 @Controller('user')
 export class UserController {

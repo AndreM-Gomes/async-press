@@ -73,6 +73,9 @@
       "^.+\\.(t|j)s$": "ts-jest"
     },
     "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "^@Shared/(.)*$": "<rootDir>/src/app/shared/$1"
+    }
   }
 }

@@ -3,7 +3,7 @@ import { UserEntity } from './UserEntity';
 import { UserService } from './user.service';
 import { Controller, Get, Body, Post, UseGuards, Request } from '@nestjs/common';
 import { UserCredentials } from './UserCredentials';
-import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 
 @Controller('user')
 export class UserController {
@@ -18,10 +18,5 @@ export class UserController {
   @Post()
   async registerUser(@Body() user: UserEntity){
     this.userService.saveUser(user)
-  }
-
-  @Post('login')
-  async loginUser(@Body() userCredentials: UserCredentials){
-
   }
 }

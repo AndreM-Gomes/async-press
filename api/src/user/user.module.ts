@@ -1,5 +1,6 @@
+import { AuthModule } from './../auth/auth.module';
 import { UserEntity } from './UserEntity';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { TypeOrmModule, getRepositoryToken } from '@nestjs/typeorm';
 import { Module } from '@nestjs/common';
 import { UserController } from './user.controller';
 import { UserService } from './user.service';
@@ -11,7 +12,6 @@ import { jwtConstants } from 'src/auth/jwtConstants';
   providers: [UserService],
   imports: [
     TypeOrmModule.forFeature([UserEntity]),
-    
   ],
   exports: [UserService]
 })

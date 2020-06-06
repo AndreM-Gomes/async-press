@@ -64,7 +64,7 @@ describe('AppController (e2e)',() => {
     await app.init();
   });
 
-  it('/user (POST)', () => {
+  it('Should create user -> /user (POST)', () => {
     return request(app.getHttpServer())
       .post('/user')
       .send({
@@ -75,7 +75,7 @@ describe('AppController (e2e)',() => {
       })
       .expect(201)
   });
-  it('Login and authentication', (done) => {
+  it('Should login and get user profile', (done) => {
     return request(app.getHttpServer())
       .post('/auth/login')
       .send({
@@ -99,6 +99,12 @@ describe('AppController (e2e)',() => {
           })
         done()
       })
+  })
+
+  it('Shouldn\'t have allow unauthenticated user on protected routes', () => {
+    return request(app.getHttpServer())
+    .get('/user/profile')
+    .expect(401)
   })
 
   afterAll(async () => {

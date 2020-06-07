@@ -1,18 +1,6 @@
 dist: bionic
 
-services:
-  - mysql
-
 cache: npm
-
-env:
-  global:
-    - DATABASE_PORT=3306
-    - DATABASE_NAME=blog
-    - DATABASE_USERNAME=root
-    - DATABASE_PASSWORD=""
-before_install:
-  mysql -e 'CREATE DATABASE blog'
 
 install:
   - cd api

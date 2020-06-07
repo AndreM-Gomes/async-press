@@ -14,39 +14,34 @@ import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
 import { AppModule } from './../src/app.module';
 import { UserEntity } from '../src/user/UserEntity';
-import { Repository } from 'typeorm';
+import { Repository, Connection } from 'typeorm';
 
+import { createConnection, EntitySchema } from 'typeorm'
+type Entity = Function | string | EntitySchema<any>
+
+export async function createMemDB(entities: Entity[]) {
+  return createConnection({
+    // name, // let TypeORM manage the connections
+    type: 'sqlite',
+    database: ':memory:',
+    entities,
+    dropSchema: true,
+    synchronize: true,
+    logging: false,
+    name: 'test'
+  })
+}
 
 describe('AppController (e2e)',() => {
   let app: INestApplication;
+  let connection: Connection
+  let userRepository: Repository<UserEntity>
 
   beforeAll(async () => {
-    const users: UserEntity[] = [
-      {
-        id: 1,
-        email: 'coffe@latte',
-        name: 'Mr Coffe',
-        password: 'coffe',
-        username: 'coffe'
-      },
-      {
-        id: 2,
-        email: 'latte@latte',
-        name: 'Mrs Latte',
-        password: 'latte',
-        username: 'latte'
-      },
-      {
-        id: 3,
-        email: 'chai@chai',
-        name: 'Mr Chai',
-        password: 'chai',
-        username: 'chai'
-      }
-    ]
-
-    const mockUser = new MockUserService(users)
-    const mockAuth = new MockAuthService(mockUser,new JwtService({
+    connection = await createMemDB([UserEntity])
+    userRepository = (await connection).getRepository(UserEntity)
+    const mockUser = new UserService(userRepository)
+    const mockAuth = new AuthService(mockUser,new JwtService({
       secret: jwtConstants.secret,
       signOptions: {expiresIn: '1h'}
       })
@@ -54,17 +49,17 @@ describe('AppController (e2e)',() => {
     
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [
-        AppModule
+        UserModule,
+        AuthModule,
       ],
     })
-    .overrideProvider(UserService).useValue(mockUser)
-    .overrideProvider(AuthService).useValue(mockAuth)
+    .overrideProvider('UserEntityRepository').useValue(userRepository)
     .compile();
     app = moduleFixture.createNestApplication();
     await app.init();
+    
   });
-
-  it('Should create user -> /user (POST)', () => {
+  it('Should create user -> /user (POST)', (done) => {
     return request(app.getHttpServer())
       .post('/user')
       .send({
@@ -74,10 +69,11 @@ describe('AppController (e2e)',() => {
         email: 'latte@machiato'
       })
       .expect(201)
+      .then(()=> done())
   });
   it('Should login and get user profile', (done) => {
     return request(app.getHttpServer())
-      .post('/auth/login')
+      .post('/user')
       .send({
         id: 1,
         email: 'coffe@latte',
@@ -85,19 +81,12 @@ describe('AppController (e2e)',() => {
         password: 'coffe',
         username: 'coffe'
       })
-      .expect(200)
+      .expect(201)
       .then( response => {
         request(app.getHttpServer())
-          .get('/user/profile')
-          .set('Authorization',`Bearer ${response.body.accessToken}`)
+          .post('/auth/login')
           .expect(200)
-          .expect({
-            id: 1,
-            email: 'coffe@latte',
-            name: 'Mr Coffe',
-            username: 'coffe'
-          })
-        done()
+            done()
       })
   })
 
@@ -107,7 +96,16 @@ describe('AppController (e2e)',() => {
     .expect(401)
   })
 
-  afterAll(async () => {
-    await app.close()
+  afterAll(async (done) => {
+    try{
+      await connection.close()
+      await app.close()
+      await done()
+    }catch(e){
+      console.log(e)
+    }
+    finally{
+      done()
+    }
   })
 });

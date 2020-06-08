@@ -12,7 +12,6 @@ export class UserController {
   @UseGuards(JwtAuthGuard)
   @Get('profile')
   async getUser(@Request() req){
-    console.log(process.env.DATABASE_PORT)
     return this.userService.findById(req.user)
   }
 

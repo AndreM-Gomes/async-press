@@ -1,45 +1,70 @@
 
 .headerBar {
+  display: flex;
   position: fixed;
+  padding: 0px 50px;
   height: 60px;
   width: 100vw;
   top: 0px;
   background: #ffffff;
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 1px 1px #0000001a;
   z-index: 1;
+  justify-content: space-between;
 }
 
+.left-group {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+}
+
+.left-group .logo {
+  background-color: black;
+  width: 60px;
+  height: 38px;
+  padding: 10px 10px;
+  border-radius: 4px;
+  margin-right: 15px ;
+}
+
+.rigth-group {
+  display: flex;
+  width: 300px;
+  padding: 10px;
+  justify-content: space-between;
+}
+
+.rigth-group .icon {
+  margin-top: 7px;
+}
 .search-box {
-  position: relative;
   height: 40px;
   width: 500px;
   padding: 15px;
-  top: 9px;
-  left: 120px;
   border-radius: 3px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   background: #F9FAFA;
 }
 
 .btnHeader {
-  position: absolute;
   width: 130px;
-  height: 45px;
-  right: 200px;
-  top: 7px;
+  height: 40px;
   border: 0px;
-
   font-family: 'Open Sans', sans-serif;
   font-size: 18px;
   font-weight: 600 ;
 }
 
 .headerBar .imgMask {
-  position: absolute;
   width: 40px;
   height: 40px;
-  top: 10px;
-  right: 50px;
-  text-align: center;
   align-content: center;
+}
+
+span {
+  background: url('../../assets/logo.svg') no-repeat;
+  display: flex;
+  flex-direction: row;
+  width: 50px;
+  height: 20px;
 }

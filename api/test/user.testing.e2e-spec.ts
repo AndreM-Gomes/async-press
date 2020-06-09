@@ -1,3 +1,4 @@
+import { PostEntity } from './../src/post/PostEntity';
 import { jwtConstants } from './../src/auth/jwtConstants';
 import { JwtService, JwtModule, JwtModuleOptions } from '@nestjs/jwt';
 import { MockAuthService } from './mocks/auth.service.mock';
@@ -38,7 +39,7 @@ describe('AppController (e2e)',() => {
   let userRepository: Repository<UserEntity>
 
   beforeAll(async () => {
-    connection = await createMemDB([UserEntity])
+    connection = await createMemDB([UserEntity,PostEntity])
     userRepository = (await connection).getRepository(UserEntity)
     const mockUser = new UserService(userRepository)
     const mockAuth = new AuthService(mockUser,new JwtService({

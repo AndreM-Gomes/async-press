@@ -33,7 +33,7 @@ export class PostEntity {
   likesNumber: number
 
   @Index()
-  @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP(6)'})
+  @CreateDateColumn({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP'})
   createdAt: Date
 
   @ManyToOne(type => UserEntity, user => user.posts)

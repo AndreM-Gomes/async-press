@@ -26,7 +26,6 @@ before_script:
   - node_modules/.bin/newman --version
   - npm run start &
   
-
 script:
-  - sleep 5
+  - sleep 20
   - node_modules/.bin/newman run test/Blog.js.postman_collection.json 

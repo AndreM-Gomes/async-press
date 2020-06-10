@@ -1,0 +1,323 @@
+{
+	"info": {
+		"_postman_id": "e71409d8-9302-405d-9c0b-67094f9aa6a1",
+		"name": "Blog.js",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST /user",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "b961d6eb-c3c4-4189-b0fc-8df07101ad2e",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "862b20a1-7ae4-4421-b0c0-a20b9a0949c9",
+						"exec": [
+							"postman.setNextRequest('POST /auth/login')",
+							"pm.test(\"Should create user\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"latte\",\n    \"username\": \"latte\",\n    \"password\": \"latte\",\n    \"email\": \"latte@coffe\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/user",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /auth/login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3b1579e3-cb79-4eca-877e-87216b1c69a5",
+						"exec": [
+							"pm.globals.set(\"access_token\",JSON.parse(pm.response.text()).accessToken);",
+							"postman.setNextRequest('GET /user/profile')",
+							"pm.test(\"Should get token sucefull\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"latte\",\n    \"password\": \"latte\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/auth/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /user/profile",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "9b0dc83f-a4a4-4cd3-865d-fa4e058d5dcb",
+						"exec": [
+							"pm.variables.get(\"access_token\");"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "2a88d63a-3174-4e7b-a8ea-9b465c761e0c",
+						"exec": [
+							"pm.test(\"Should get authenticated user profile\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/user/profile",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /auth/login failed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "65560dfd-f0bb-49c9-a427-1241d8fcecb0",
+						"exec": [
+							"pm.test(\"When password wrong, should unauthorized\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"latte\",\n    \"password\": \"late\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/auth/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /post",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "1edb4400-055a-42fe-b81d-c1be628bc00f",
+						"exec": [
+							"pm.variables.get(\"access_token\");"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "53a35a2d-dc1a-4a76-82fc-c21f93665621",
+						"exec": [
+							"pm.test(\"Create post with authenticated User\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"coronavirus\",\n    \"minsToRead\": \"19\",\n    \"content\": \"the end of the world\",\n    \"likesNumber\": \"27\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/post",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /post fail",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "e7e78a42-da86-46cc-9c7d-b530d919a57e",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "9305b038-2ad9-4df7-bb50-303a68ca21bf",
+						"exec": [
+							"pm.test(\"Should fail to create post if unauthenticated\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"coronavirus\",\n    \"minsToRead\": \"19\",\n    \"content\": \"the end of the world\",\n    \"likesNumber\": \"27\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/post",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"post"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

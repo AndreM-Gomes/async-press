@@ -16,6 +16,7 @@ export class PostService {
   async createPost(user: UserEntity,post: PostEntity){
     const userRecord = await this.userRepository.findOneOrFail(user.id)
     post.user = userRecord
+    post.likesNumber = 0
     await this.postRepository.save(post)
   }
   async allUserPosts(username: string){
@@ -32,7 +33,7 @@ export class PostService {
     if(!period){
       return this.postRepository.createQueryBuilder('post')
       .innerJoinAndSelect('post.user','user')
-      .orderBy('post.likesNumber')
+      .orderBy('post.likesNumber',"DESC")
       .take(10)
       .skip(10 * page)
       .getMany()

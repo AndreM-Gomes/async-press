@@ -19,6 +19,7 @@ before_install:
 
 
 install:
+  - cd api
   - npm install newman
   - npm ci
 

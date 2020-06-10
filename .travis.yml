@@ -1,4 +1,4 @@
-language: node_js
+dist: bionic
 
 cache: npm
 
@@ -14,12 +14,6 @@ env:
   
 before_install:
   mysql -e 'CREATE DATABASE blog'
-
-
-install:
-  - cd api
-  - npm ci
-  - npm install newman
 
 before_script:
   - node --version

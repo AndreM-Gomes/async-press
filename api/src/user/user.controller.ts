@@ -18,5 +18,6 @@ export class UserController {
   @Post()
   async registerUser(@Body() user: UserEntity){
     this.userService.saveUser(user)
+    return this.userService.findById(user.id)
   }
 }

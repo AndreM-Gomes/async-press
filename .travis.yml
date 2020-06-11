@@ -1,9 +1,9 @@
 dist: bionic
 
+cache: npm
+
 services:
   - mysql
-
-cache: npm
 
 env:
   global:
@@ -11,12 +11,21 @@ env:
     - DATABASE_NAME=blog
     - DATABASE_USERNAME=root
     - DATABASE_PASSWORD=""
+  
 before_install:
   mysql -e 'CREATE DATABASE blog'
+
 
 install:
   - cd api
   - npm ci
 
+before_script:
+  - node --version
+  - npm --version
+  - node_modules/.bin/newman --version
+  - npm run start &
+  
 script:
-  - npm run test:e2e 
+  - sleep 20
+  - node_modules/.bin/newman run test/Blog.js.postman_collection.json 

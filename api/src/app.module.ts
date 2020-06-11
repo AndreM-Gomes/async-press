@@ -8,6 +8,7 @@ import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { Connection } from 'typeorm';
 import { ConfigModule } from '@nestjs/config'
+import { PostModule } from './post/post.module';
 
 @Module({
   imports: [
@@ -19,12 +20,13 @@ import { ConfigModule } from '@nestjs/config'
       username: process.env.DATABASE_USERNAME,
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_NAME,
-      entities: [UserEntity],
+      entities: [],
       synchronize: true,
       autoLoadEntities: true
     }),
     UserModule,
     AuthModule,
+    PostModule,
   ],
   providers: [AppService],
   controllers: [AppController],

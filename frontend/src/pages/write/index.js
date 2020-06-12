@@ -1,16 +1,28 @@
 import React from 'react'
+import {useHistory} from 'react-router-dom'
 
 import './styles.css'
 import Header from '../../components/header'
+import {useAuth} from '../../services/auth'
 
 export default function Write()  {
 
-    return(
-      <div>
-        <Header/>
-        <div className='write-page'>
-          <imput></imput>
+    const history = useHistory()
+
+    const [loged] = useAuth()
+
+    if(!loged){
+      return(
+        <div>
+          <Header/>
+          <div className='write-page'>
+            <imput></imput>
+          </div>
         </div>
-      </div>
-    )
+      )
+    }
+    else {
+      history.push('/register')
+      return null
+    }
 }

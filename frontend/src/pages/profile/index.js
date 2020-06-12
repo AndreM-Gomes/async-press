@@ -1,17 +1,26 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import  {useHistory} from 'react-router-dom'
 
 import './styles.css'
 import Header from '../../components/header'
+import api from '../../services/api'
+import {authFetch, useAuth} from '../../services/auth'
 
 export default function Profile(){
-  
+  const [userInfo, setUserInfo] = useState([])
+
+  const [loged] = useAuth()
+  const history = useHistory()
+
+  authFetch('http://localhost:3000/user/profile').then(r => r.json()).then(user => setUserInfo(user))
+  if(loged){
     return(
       <div className="container">
         <Header/>
           <div className='card profile'>
             <img src='user.jpeg' className='imgMask' alt='user'/>
             <div className='user-info'>
-              <h1>IncognitaDev</h1> 
+              <h1>{userInfo.username}</h1> 
               <button>EDIT PROFILE</button>
               <p>404 bio not found</p>
               <div className='social-links'></div>
@@ -24,5 +33,9 @@ export default function Profile(){
           </div>  
       </div>
     )
-  
+    }
+    else {
+      history.push('/register')
+      return null
+    }
 }

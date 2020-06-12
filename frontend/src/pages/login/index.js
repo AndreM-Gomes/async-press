@@ -1,12 +1,13 @@
 import React, {useState} from 'react'
 import {Link, useHistory} from 'react-router-dom'
+import {login} from '../../services/auth/index'
 
 import './styles.css'
 import Header from '../../components/header'
 import api from '../../services/api'
 
 export default function Login() {
-    const [email, setEmail] = useState('')
+    const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
     const history = useHistory()
@@ -15,12 +16,13 @@ export default function Login() {
       e.preventDefault()
 
       const data = {
-          email,
+          username,
           password,
       };
 
       try {
-        await api.post('auth/login', data)
+        const token = await api.post('auth/login', data).then(response =>  response.data)
+        login(token)
         history.push('/')
       }
       catch (err) {
@@ -34,7 +36,7 @@ export default function Login() {
         <Header/>
         <div className="card login">
             <form onSubmit={handleLogin}>
-              <input type='email' placeholder='e-mail' onChange={e => setEmail(e.target.value)}/>
+              <input type='text' placeholder='username' onChange={e => setUsername(e.target.value)}/>
               <input type='password' placeholder='Senha' onChange={e => setPassword(e.target.value)}/>
               <button className='main' type='submit' value='Login'>Login</button>
             </form>

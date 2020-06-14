@@ -1,11 +1,10 @@
 import React, {useEffect, useState}from 'react'
 
 import './styles.css'
-import TagService from '../../services/TagsService'
 
 const Sidebar = () => {
   const [hashLikedList, setHashLikedList] = useState([])
-  const service = new TagService()
+
 
   /*useEffect(()=> {
     service.getHash().then(response => setHashLikedList(response.hashs))

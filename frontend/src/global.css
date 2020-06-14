@@ -5,7 +5,7 @@
 }
 
 body{
-  background: #F9FAFA;
+  background: #EEF0F1;
 }
 
 button {
@@ -27,4 +27,13 @@ button {
   background: #FFFFFF;
   border-radius: 3px;
    box-shadow: 0px 1px 4px rgba(0,0,0,0.25);
+}
+
+span.notify{
+  height: 18px;
+  width: 13px;
+  border-radius: 3px;
+  z-index: 1;
+  text-align: center;
+  color: whitesmoke;
 }

@@ -14,8 +14,14 @@ const Header = () => {
       </div>
       <div className='rigth-group'>
         <Link to='/write' className='write'><button className='main btnHeader'>Write a post</button></Link>
-        <FiMessageCircle size={25} className='icon'/>
-        <FiBell size={25} className='icon'/>
+        <div>
+          <span className='notify'></span>
+          <FiMessageCircle size={25} className='icon'/>
+        </div>
+        <div>
+          <span className='notify'></span>
+          <FiBell size={25} className='icon'/>
+        </div>
         <img src="user.jpeg" alt="" className="imgMask"/>
       </div>
     </div>

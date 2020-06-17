@@ -11,14 +11,6 @@ export class AuthService {
     private jwtService: JwtService
     ){}
 
-  async validateUser(credentials: UserCredentials){
-    const user = await this.userService.findCredentialsByUsername(credentials.username)
-    if(user && await argon2.verify(user.password, credentials.password)){
-      const {id} = user
-      return id
-    }
-    return null
-  }
 
   async login(credentials){
     console.log(credentials)

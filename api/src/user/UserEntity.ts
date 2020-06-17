@@ -8,16 +8,13 @@ export class UserEntity {
     id: number
 
     @Column()
+    firebaseUid: string
+    
+    @Column()
     name: string
 
     @Column()
     username: string
-
-    @Column()
-    email: string
-
-    @Column({select: false})
-    password: string
 
     @OneToMany(type => PostEntity, post => post.user)
     posts: PostEntity[]

@@ -14,7 +14,7 @@ export class PostService {
     private userRepository: Repository<UserEntity>
   ){}
   async createPost(user: UserEntity,post: PostEntity){
-    const userRecord = await this.userRepository.findOneOrFail(user.id)
+    const userRecord = await this.userRepository.findOneOrFail({where:{firebaseUid: user.firebaseUid}})
     post.user = userRecord
     post.likesNumber = 0
     await this.postRepository.save(post)

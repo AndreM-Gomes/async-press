@@ -1,7 +1,7 @@
 import { FirebaseGuard } from './../auth/guards/firebase.guard';
 import { UserEntity } from './UserEntity';
 import { UserService } from './user.service';
-import { Controller, Get, Body, Post, UseGuards, Request } from '@nestjs/common';
+import { Controller, Get, Body, Post, UseGuards, Request, NotFoundException } from '@nestjs/common';
 
 @Controller('user')
 export class UserController {
@@ -10,7 +10,9 @@ export class UserController {
   @UseGuards(FirebaseGuard)
   @Get('profile')
   async getUser(@Request() req){
-    return this.userService.findByUID(req.user)
+    const user = this.userService.findInLocalByUID(req.user)
+    if(!user) throw new NotFoundException()
+    return user
   }
 
   @UseGuards(FirebaseGuard)

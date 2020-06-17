@@ -16,9 +16,14 @@ export class UserService {
       return this.userRepository.findOne({where:{id}})
     }
 
-    async findByUID(uid: string){
+    async findInFirebaseByUID(uid: string){
       const userRecord = await admin.auth().getUser(uid)
       return userRecord.toJSON()
+    }
+
+    async findInLocalByUID(uid: string){
+      const userRecord = await this.userRepository.findOne({where:{firebaseUid:uid}})
+      return userRecord
     }
 
     async saveUser(user: UserEntity) {

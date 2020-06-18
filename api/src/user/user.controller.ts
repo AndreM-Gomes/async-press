@@ -1,4 +1,4 @@
-import { FirebaseGuard } from './../auth/guards/firebase.guard';
+import { FirebaseGuard } from './../guards/firebase.guard';
 import { UserEntity } from './UserEntity';
 import { UserService } from './user.service';
 import { Controller, Get, Body, Post, UseGuards, Request, NotFoundException } from '@nestjs/common';

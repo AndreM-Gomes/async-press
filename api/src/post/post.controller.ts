@@ -1,6 +1,5 @@
-import { FirebaseGuard } from './../auth/guards/firebase.guard';
+import { FirebaseGuard } from '../guards/firebase.guard';
 import { UserEntity } from './../user/UserEntity';
-import { JwtAuthGuard } from './../auth/guards/jwt-auth.guard';
 import { PostService } from './post.service';
 import { Controller, UseGuards, Body, Request, Post, Get, Param, Query } from '@nestjs/common';
 import { PostFactory } from './PostFactory';

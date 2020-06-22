@@ -36,10 +36,10 @@ export class PostEntity {
   @CreateDateColumn({ type: 'datetime'})
   createdAt: Date
 
-  @ManyToOne(type => UserEntity, user => user.posts)
+  @ManyToOne(type => UserEntity, user => user.posts,{onDelete:"CASCADE"})
   user: UserEntity
 
-  @ManyToMany(type => UserEntity, userLiked => userLiked.postsLiked)
+  @ManyToMany(type => UserEntity, userLiked => userLiked.postsLiked,{onDelete:"CASCADE"})
   @JoinTable()
   usersLiked: UserEntity[]
 }

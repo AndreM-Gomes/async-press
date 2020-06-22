@@ -1,7 +1,7 @@
 import { FirebaseGuard } from '../guards/firebase.guard';
 import { UserEntity } from './../user/UserEntity';
 import { PostService } from './post.service';
-import { Controller, UseGuards, Body, Request, Post, Get, Param, Query } from '@nestjs/common';
+import { Controller, UseGuards, Body, Request, Post, Get, Param, Query, Delete } from '@nestjs/common';
 import { PostFactory } from './PostFactory';
 import { Period } from './Period';
 
@@ -19,6 +19,14 @@ export class PostController {
     this.postService.createPost(authenticatedUser,post)
   }
   
+  @UseGuards(FirebaseGuard)
+  @Delete(':postId')
+  async deletePost(@Request() req,@Param('postId') postIdParameter){
+    const userFirebaseUid = req.user
+    const postId = Number.parseInt(postIdParameter,10)
+    await this.postService.deletePost(userFirebaseUid,postId)
+  }
+
   @Get('/user/:username')
   async getPostsFromUsername(@Param('username') username){
     return this.postService.allUserPosts(username)

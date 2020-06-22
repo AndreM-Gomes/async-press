@@ -16,9 +16,9 @@ export class UserEntity {
     @Column()
     username: string
 
-    @OneToMany(type => PostEntity, post => post.user)
+    @OneToMany(type => PostEntity, post => post.user,{onDelete:"CASCADE"})
     posts: PostEntity[]
 
-    @ManyToMany(type => PostEntity, postsLiked => postsLiked.usersLiked)
+    @ManyToMany(type => PostEntity, postsLiked => postsLiked.usersLiked,{onDelete:"CASCADE"})
     postsLiked: PostEntity[]
 }

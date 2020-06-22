@@ -1,5 +1,5 @@
 import { UserEntity } from './../user/UserEntity';
-import { Column, ManyToOne, Generated, CreateDateColumn, Index, AfterInsert, OneToMany } from 'typeorm';
+import { Column, ManyToOne, Generated, CreateDateColumn, Index, AfterInsert, OneToMany, ManyToMany, JoinTable } from 'typeorm';
 import { PrimaryGeneratedColumn } from 'typeorm';
 import { Entity } from 'typeorm';
 
@@ -39,4 +39,7 @@ export class PostEntity {
   @ManyToOne(type => UserEntity, user => user.posts)
   user: UserEntity
 
+  @ManyToMany(type => UserEntity, userLiked => userLiked.postsLiked)
+  @JoinTable()
+  usersLiked: UserEntity[]
 }

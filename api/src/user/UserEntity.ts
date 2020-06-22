@@ -1,5 +1,5 @@
 import { PostEntity } from './../post/PostEntity';
-import {Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne, ManyToMany} from "typeorm";
 
 @Entity()
 export class UserEntity {
@@ -18,4 +18,7 @@ export class UserEntity {
 
     @OneToMany(type => PostEntity, post => post.user)
     posts: PostEntity[]
+
+    @ManyToMany(type => PostEntity, postsLiked => postsLiked.usersLiked)
+    postsLiked: PostEntity[]
 }

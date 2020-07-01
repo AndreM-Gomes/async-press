@@ -1,4 +1,3 @@
-import React from 'react'
 import React , {useState}from 'react'
 import {useHistory} from 'react-router-dom'
 import firebase from 'firebase/app'
@@ -8,6 +7,8 @@ import "react-mde/lib/styles/css/react-mde-all.css";
 
 import './styles.css'
 import Header from '../../components/header'
+import api from '../../services/api'
+
 const converter  = new Showdown.Converter({
   tables: true,
   simplifieldAutoLink: true,
@@ -19,18 +20,17 @@ export default function Write()  {
   const [title, setTitle] = useState("")
   const [content, setContent] = useState("");
   const [selectedTab, setSelectedTab] = useState("write");
+  const history = useHistory()
 
-    const history = useHistory()
   const user = firebase.auth().currentUser
 
-    const [loged] = useAuth()
+  function handlePost() {
+    api.post('user/post', {
+      title,
+      content
+    }).then(history.push('/'))
+  }
 
-    if(!loged){
-      return(
-        <div>
-          <Header/>
-          <div className='write-page'>
-            <imput></imput>
   if(user) {
     return(
       <div className='container'>
@@ -53,10 +53,10 @@ export default function Write()  {
             <button className='main' onClick={handlePost}>Post</button>
           </div>
         </div>
-      )
-    }
-    else {
-      history.push('/register')
-      return null
-    }
+      </div>
+    )
+  }else {
+    history.push('/register')
+    return null
+  }
 }

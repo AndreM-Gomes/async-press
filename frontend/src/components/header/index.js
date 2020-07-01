@@ -1,14 +1,14 @@
-import React from 'react'
 import React , {useState}from 'react'
 import { Link } from 'react-router-dom'
 import {FiMessageCircle, FiBell} from  'react-icons/fi'
 import firebase from 'firebase/app'
 
-import './styles.css'
 
+import './styles.css'
 
 const Header = () => {
   const [user, setUser] = useState({})
+
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       // User is signed in.
@@ -36,7 +36,6 @@ const Header = () => {
           <span className='notify'></span>
           <FiBell size={25} className='icon'/>
         </div>
-        <img src="user.jpeg" alt="" className="imgMask"/>
         {user &&
         <img src={user.photoURL} alt="" className="imgMask"/>
         }

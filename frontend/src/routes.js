@@ -8,6 +8,7 @@ import Register from './pages/register'
 import Profile from './pages/profile'
 import Dashboard from './pages/dashboard'
 import Post from './pages/post'
+import Page404 from './pages/page404'
 
 export default function Routes(){
 
@@ -21,6 +22,7 @@ export default function Routes(){
           <Route path='/register' component={Register}/>
           <Route path='/dashboard' component={Dashboard}/>
           <Route path='/profile' component={Profile}/>
+          <Route path='/*'component={Page404}/>
       </Switch>
     </BrowserRouter>
   )

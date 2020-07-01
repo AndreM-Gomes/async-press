@@ -1,9 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import Header from '../../components/header'
-import {FiMessageSquare, FiHeart, FiArchive, FiList, FiMic, FiVideo, FiTag} from 'react-icons/fi'
 import api from '../../services/api'
-
 import firebase from 'firebase/app'
+import {FiMessageSquare, FiHeart, FiArchive, FiList, FiMic, FiVideo, FiTag} from 'react-icons/fi'
 
 import './styles.css';
 import Sidebar from '../../components/sidebar';
@@ -13,7 +12,6 @@ export default function Home() {
   const [postList, setPostList] = useState([])
   const [firstPost, setFirstPost] = useState([])
   const [user, setUser] = useState(null)
-
 
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
@@ -34,28 +32,26 @@ export default function Home() {
   })
 
   useEffect(()=>{
-      api.get('/post/latest').then(response => { setPostList(response.data)})
+      api.get('/post/latest').then(response => {setPostList(response.data)})
   })
 
-  function handleClick(props){
+  function handleClick(e){
     
   }
-
-
-    return(
-      
-      <div className='container'>
+  return(
+    <div className='container'>
         <Header/>
-        <Sidebar/>
-        <section className='leftList'>
+        <Sidebar/><section className='leftList'>
           <ul>
             <li className='item user'>
-              <img src='user.jpeg' alt="" className="imgMask"/>
+            {user && <>
+              <img src={user.photoURL} alt="User" className="imgMask"/>
               <div>
-                <strong>IncognitaDev</strong>
+                <strong>{user.displayName}</strong>
                 <p>@incognitadev</p>
               </div>
-            </li>
+            </>}
+            </li>   
             <li className='item'><FiArchive size={18} className='icon'/>Reading list<span className="notify"></span></li>
             <li className='item'><FiList size={18} className='icon'/>Listings<span className="notify"></span></li>
             <li className='item'><FiMic size={18} className='icon'/>Podcasts<span className="notify"></span></li>
@@ -64,16 +60,15 @@ export default function Home() {
             <li className='item'>more...</li>
           </ul>
         </section>
-
         <nav className='feed-bar'>
           <h3>Posts</h3>
             <ul>
-              <li><div className={buttonClass} id='1' onClick={()=>handleClick}>Feed</div></li>
-              <li><div className={buttonClass} id='2' onClick={()=>handleClick}>Week</div></li>
-              <li><div className={buttonClass} id='3' onClick={()=>handleClick}>Month</div></li>
-              <li><div className={buttonClass} id='4' onClick={()=>handleClick}>Year</div></li>
-              <li><div className={buttonClass} id='5' onClick={()=>handleClick}>Infinity</div></li>
-              <li><div className={buttonClass} id='6' onClick={()=>handleClick}>Latest</div></li>
+              <li><div className={buttonClass} value='feed' onClick={e =>handleClick(e.target.value)}>Feed</div></li>
+              <li><div className={buttonClass} value='week' onClick={e =>handleClick(e.target.value)}>Week</div></li>
+              <li><div className={buttonClass} value='Month' onClick={e =>handleClick(e.target.value)}>Month</div></li>
+              <li><div className={buttonClass} value='Year' onClick={e =>handleClick(e.target.value)}>Year</div></li>
+              <li><div className={buttonClass} value='Infinty' onClick={e =>handleClick(e.target.value)}>Infinity</div></li>
+              <li><div className={buttonClass} value='Latest' onClick={e =>handleClick(e.target.value)}>Latest</div></li>
             </ul>
         </nav>
         <div className='postList'>
@@ -91,11 +86,11 @@ export default function Home() {
                 </div>
               <h1>{postFil.title}</h1>
               </div>
-              <div className="post-tags">
-                <p className="tags">#Pandemy</p>
-                <p className="tags">#Health</p>
-                <p className="tags">#Test</p>
-              </div>
+              <ul className="post-tags">
+                <li>#Pandemy</li>
+                <li>#Health</li>
+                <li>#Test</li>
+              </ul>
               <div className='post-footer'>
                 <div className='action'>
                   <FiHeart size={18}/>
@@ -103,6 +98,7 @@ export default function Home() {
                   <FiMessageSquare size={18}/>
                   <p>Comments</p>
                 </div>
+                <p className='mins'>{postFil.minsToRead} mins to read</p>
                 <button>Save</button>
               </div>
             </div>
@@ -130,6 +126,7 @@ export default function Home() {
                   <FiMessageSquare size={18}/>
                   <p>Comments</p>
                 </div>
+                <p className='mins'>{postFil.minsToRead} mins to read</p>
                 <button>Save</button>
               </div>
               </div>
@@ -154,5 +151,5 @@ export default function Home() {
            </div>
         </section>
       </div>
-    )
+  )
 }

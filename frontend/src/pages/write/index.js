@@ -3,7 +3,6 @@ import {useHistory} from 'react-router-dom'
 
 import './styles.css'
 import Header from '../../components/header'
-import {useAuth} from '../../services/auth'
 
 export default function Write()  {
 

@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import {Link, useHistory} from 'react-router-dom'
-import {login} from '../../services/auth/index'
 
 import './styles.css'
 import Header from '../../components/header'

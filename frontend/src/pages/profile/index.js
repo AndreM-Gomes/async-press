@@ -4,16 +4,11 @@ import  {useHistory} from 'react-router-dom'
 import './styles.css'
 import Header from '../../components/header'
 import api from '../../services/api'
-import {authFetch, useAuth} from '../../services/auth'
 
 export default function Profile(){
   const [userInfo, setUserInfo] = useState([])
 
-  const [loged] = useAuth()
   const history = useHistory()
-
-  authFetch('http://localhost:3000/user/profile').then(r => r.json()).then(user => setUserInfo(user))
-  if(loged){
     return(
       <div className="container">
         <Header/>

@@ -63,7 +63,7 @@
   display: flex;
 }
 
-.post-tags p {
+.post-tags li {
   margin-right: 20px;
 }
 

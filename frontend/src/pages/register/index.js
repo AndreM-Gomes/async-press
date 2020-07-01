@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-
 import {Link, useHistory} from 'react-router-dom'
 import firebase from 'firebase/app'
 
@@ -12,24 +11,11 @@ export default function Register(){
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [email, setEmail] = useState('')
-
   const [user, setUser] = useState(null)
   
   const history = useHistory()
 
-  async function handleRegister(e){
-    e.preventDefault()
 
-    const data = {
-      name,
-      email,
-      password,
-      username,
-    };
-
-    try {
-      await api.post('user', data)
-      history.push('/')
   const googleProvider = new firebase.auth.GoogleAuthProvider()
   const facebookProvider = new firebase.auth.FacebookAuthProvider()
   const githubProvider = new firebase.auth.GoogleAuthProvider()
@@ -50,8 +36,6 @@ export default function Register(){
       // User is signed out.
       // ...
     }
-    catch (err){
-      console.log('error')
   });
   
 
@@ -97,19 +81,25 @@ export default function Register(){
       <div className="container">
         <Header/>
         <div className="card register">
-            <form onSubmit={handleRegister}>
-              <input placeholder='Name' value={name} onChange={e => setName(e.target.value)}/>
-              <input type="text"  placeholder='username' value={username} onChange={e => setUsername(e.target.value)}/>
-              <input type='email' placeholder='e-mail' value={email} onChange={e => setEmail(e.target.value)}/>
-              <div className='input-group'> 
-                <input type='password' placeholder='Senha' value={password} onChange={e => setPassword(e.target.value)}/>
-                <input type='password' placeholder='Senha'/>
-              </div>
-              <button className='main' type='submit'>Cadastrar</button>
-            </form>
-           <Link to='/login' className='link'>Fazer Login</Link>
+          <div className="auth-container">
+            <h2>Sing in with</h2>
+            <button className='Github' onClick={() =>handleSingin(githubProvider)}><span></span>Github</button>
+            <button className='Facebook' onClick={() =>handleSingin(facebookProvider)}><span></span>Facebook</button>
+            <button className='Google' onClick={() =>handleSingin(googleProvider)}><span></span>Google</button>
+            <button className='Email' onClick={() => 'ten'}><span></span>Email</button>
+          </div>
         </div>
       </div>
     )
-
+  }else{
+    return (
+      <div className="container">
+        <Header/>
+        <div className="card register">
+          <h1>Você ja tem nossa confiança!</h1>
+          <Link to='/'><button className='main'>Explorar Posts</button></Link>
+        </div>
+      </div>
+    )
+  }
 }

@@ -33,9 +33,4 @@ export default function Profile(){
           </div>  
       </div>
     )
-    }
-    else {
-      history.push('/register')
-      return null
-    }
 }

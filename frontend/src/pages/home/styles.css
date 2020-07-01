@@ -2,8 +2,8 @@
 .container{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 60px 1fr;
-  grid-gap: 30px 1em;
+  grid-template-rows:  60px 1fr;
+  grid-gap: 20px 1em;
   justify-items: center;
 }
 
@@ -14,19 +14,35 @@
 }
 
 .postList .post {
-  width: 650px;
+  width: 680px;
   min-height: 180px ;
   margin-bottom: 10px;
   box-sizing: content-box;
+  cursor: pointer;
 }
 
-.postList .post_1{
-  box-sizing: content-box;
-}
-
-.postList .post_1 .post-content{
+.postList .post .post-content{
   width: 100%;
-  padding: 5px 30px;
+  padding: 5px 20px 0px 60px;
+}
+
+.post-info .imgMask {
+  width: 30px;
+  height: 30px;
+  margin: 0px 10px;
+}
+
+.post-content h1{
+  line-height: 45px;
+}
+
+.post-content h1:hover {
+  color: #3B49DF;
+}
+
+.post-info {
+  display: flex;
+  padding: 10px;
 }
 
 .postList .post .mask {
@@ -36,10 +52,19 @@
 }
 
 .postList .post h1{
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
   color: #000000;
-  font-size: 40px;
+  font-size: 30px;
+  line-height: 37px;
   font-weight: bold;
+}
+
+.post-tags {
+  display: flex;
+}
+
+.post-tags li {
+  margin-right: 20px;
 }
 
 .post-footer {
@@ -48,6 +73,18 @@
   bottom: 0px;
   width: 100%;
   height: 40px;
+  justify-content: space-between;
+}
+
+.post-footer p{
+  margin-left: 5px;
+  margin-right: 15px;  
+}
+
+.post-footer .action{
+  box-sizing: border-box;
+  display: flex;
+  padding: 10px 0px;
 }
 
 .post button{
@@ -70,17 +107,26 @@
 
 .leftList .item{
   display: flex;
-  width: 277px;
+  width: 250px;
   border-radius: 3px;
   font-family: 'Open Sans', sans-serif;
   font-weight: 500;
-  padding: 10px 17px;
+  padding: 10px 10px;
   list-style: none;
   line-height: 20.7px;
 }
   
 .leftList .item:hover {
   background: rgba(222, 222, 222, 0.616);
+}
+
+.leftList .item span.notify{
+  margin-left: 15px;
+  background-color: rgba(128, 128, 128, 0.466);
+}
+          
+.leftList .icon {
+  margin-right: 7px;
 }
 
 .leftList .user {
@@ -106,47 +152,29 @@
   margin-right: 10px;
 }
 
-.tags {
-  margin-top: 10px;
-  height: 400px;
-  overflow-y: scroll;
-}
-
-.tags h5 {
-  padding: 15px 0px ;
-}
-
-.tag-item {
-  width: 250px;
-  padding: 10px;
-  list-style: none;
-  transition: 0.2s;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 15px;
-  font-weight: 500;
-  color: #202428;
-}
-
-.tag-item:hover {
-  background: #DEDEDE;
-}
-
 .feed-bar { 
   grid-row: 2;
   grid-column: 2;
+  height: 40px;
+  width: 670px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.feed-bar h3 {
+  font-family: 'Open Sans', sans-serif;
 }
 
 .feed-bar ul {
   display: flex;
-  justify-content: space-around;
-  margin: 0px 60px;
   list-style: none;
   font-family:  Tahoma ;
 }
 
 .feed-bar li {
-  font-size: 20px;
-  color: grey;
+  font-size: 30px;
+  color: rgb(177, 177, 177);
 }
 
 .feed-bar a {
@@ -159,24 +187,23 @@
   text-align: center;
   border-radius: 3px;
   transition: 0.2s;
-  padding: 3px 7px;
+  padding: 8px 7px;
   font-family:  Tahoma ;
-  font-size: 20px;
-  font-weight: 500 ;
-  color:   rgba(104, 112, 241);
+  font-weight: 500;
+  font-size: 15px;
   display: block;
-}
-
-.feed-bar .feed-button.selected {
-  box-shadow: 4px 6px  rgba(104, 112, 241) ;
-  background-color: #D5DCFE;
+  margin: 3px;
   color: black;
 }
 
+.feed-bar .feed-button.selected {
+  box-shadow: 0px 4px   rgba(104, 112, 241) ;
+  font-weight: bold;
+}
+
 .feed-bar .feed-button:hover {
-  background: rgba(104, 112, 241) ;
-  box-shadow: 4px 6px  #D5DCFE;
-  color: white;
+  color: rgba(104, 112, 241) ;
+  background-color:#D5DCFE;
 }
 
 .g-image {
@@ -226,4 +253,9 @@
 .secundary {
   background: #ffffff;
   color: #000000;
+}
+
+.tags {
+  grid-row: 2;
+  grid-column: 1;
 }

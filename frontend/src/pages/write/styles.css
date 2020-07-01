@@ -1,9 +1,40 @@
 .write-page{
-  position: absolute;
   background: #FFFFFF;
-  width: 900px;
-  height: 550px;
-  top: 110px;
-  left: 20vw;
+  border-radius: 3px;
+  padding-top: 60px;
+  grid-row: 2;
+  grid-column: 2;
+  min-height: 80vh;
+  margin-bottom: 30px;
+  width: 70vw;
+}
+
+.write-page form {
+  display: flex;
+  flex-direction: column;
+  box-sizing: content-box;
+}
+
+.write-page .action {
+  display: flex;
+}
+.write-page button.main{
+  margin: 30px auto;
+  width: 200px;
+  height: 40px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.editor {
+  width: 55vw;
+  margin: auto;
+}
+
+.write-page form input{ 
+  margin: auto;
+  margin-bottom: 70px;
+
+  width: 55vw;
   border-radius: 3px;
 }

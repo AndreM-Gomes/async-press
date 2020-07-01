@@ -1,14 +1,16 @@
 import React from 'react';
-import Header from './components/header'
 import Routes from './routes'
+import {fbInit} from './services/auth'
 
 import './global.css'
 
 function App() {
+
+  fbInit()
+  
   return (
     <div className='App'>
       <Routes/>
-      <Header/>
     </div>
   );
 }

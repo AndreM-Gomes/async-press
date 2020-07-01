@@ -32,3 +32,9 @@ lerna-debug.log*
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+#env
+.env
+
+#security credencial 
+async-press-firebase-adminsdk-szdv1-fe01c8641a.json

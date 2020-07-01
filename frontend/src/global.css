@@ -2,10 +2,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  list-style: none;
 }
 
 body{
   background: #EEF0F1;
+  font-family: 'Open sans', sans-serif;
 }
 
 button {
@@ -26,7 +28,7 @@ button {
 .card {
   background: #FFFFFF;
   border-radius: 3px;
-   box-shadow: 0px 1px 4px rgba(0,0,0,0.25);
+  box-shadow: 0px 1px 4px rgba(0,0,0,0.25);
 }
 
 span.notify{

@@ -1,6 +1,5 @@
 import React from 'react'
 import {BrowserRouter, Route, Switch } from 'react-router-dom'
-import {useAuth} from './services/auth'
 
 import Home from './pages/home'
 import Write from './pages/write'

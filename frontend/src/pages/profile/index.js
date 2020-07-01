@@ -9,6 +9,11 @@ export default function Profile(){
   const [userInfo, setUserInfo] = useState([])
 
   const history = useHistory()
+  
+  useEffect(() => {
+    api.get('http://localhost:3000/user/profile').then(r => r.json()).then(user => setUserInfo(user))
+  })
+ 
     return(
       <div className="container">
         <Header/>

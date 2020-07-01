@@ -9,6 +9,7 @@
     "@uiw/react-markdown-editor": "^1.4.3",
     "axios": "^0.19.2",
     "firebase": "^7.15.1",
+    "firebaseui": "^4.5.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-icons": "^3.10.0",

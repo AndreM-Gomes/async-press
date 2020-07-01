@@ -1,6 +1,7 @@
 import React from 'react'
 import React , {useState}from 'react'
 import {useHistory} from 'react-router-dom'
+import firebase from 'firebase/app'
 import ReactMde from 'react-mde'
 import * as Showdown from 'showdown'
 import "react-mde/lib/styles/css/react-mde-all.css";
@@ -20,6 +21,7 @@ export default function Write()  {
   const [selectedTab, setSelectedTab] = useState("write");
 
     const history = useHistory()
+  const user = firebase.auth().currentUser
 
     const [loged] = useAuth()
 

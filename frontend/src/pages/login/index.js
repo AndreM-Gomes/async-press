@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {Link, useHistory} from 'react-router-dom'
+import * as firebase from 'firebase/app'
 
 import './styles.css'
 import Header from '../../components/header'

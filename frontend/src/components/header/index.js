@@ -1,11 +1,25 @@
 import React from 'react'
+import React , {useState}from 'react'
 import { Link } from 'react-router-dom'
 import {FiMessageCircle, FiBell} from  'react-icons/fi'
+import firebase from 'firebase/app'
 
 import './styles.css'
 
 
 const Header = () => {
+  const [user, setUser] = useState({})
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
+      setUser(user)
+      // ...
+    } else {
+      // User is signed out.
+      // ...
+    }
+  });
+
   return  (
     <div className="headerBar">
       <div className='left-group'>
@@ -23,6 +37,9 @@ const Header = () => {
           <FiBell size={25} className='icon'/>
         </div>
         <img src="user.jpeg" alt="" className="imgMask"/>
+        {user &&
+        <img src={user.photoURL} alt="" className="imgMask"/>
+        }
       </div>
     </div>
   )

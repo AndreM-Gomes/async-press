@@ -3,6 +3,7 @@ import Header from '../../components/header'
 import {FiMessageSquare, FiHeart, FiArchive, FiList, FiMic, FiVideo, FiTag} from 'react-icons/fi'
 import api from '../../services/api'
 
+import firebase from 'firebase/app'
 
 import './styles.css';
 import Sidebar from '../../components/sidebar';
@@ -11,8 +12,26 @@ export default function Home() {
   const [buttonClass, setButtonClass] = useState('feed-button')
   const [postList, setPostList] = useState([])
   const [firstPost, setFirstPost] = useState([])
+  const [user, setUser] = useState(null)
 
 
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
+      var displayName = user.displayName;
+      var email = user.email;
+      var emailVerified = user.emailVerified;
+      var photoURL = user.photoURL;
+      var isAnonymous = user.isAnonymous;
+      var uid = user.uid;
+      var providerData = user.providerData;
+      setUser(user)
+      // ...
+    } else {
+      // User is signed out.
+      // ...
+    }
+  })
 
   useEffect(()=>{
       api.get('/post/latest').then(response => { setPostList(response.data)})

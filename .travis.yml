@@ -11,6 +11,7 @@ env:
     - DATABASE_NAME=blog
     - DATABASE_USERNAME=root
     - DATABASE_PASSWORD=""
+    - JWT_SECRET=secret
   
 before_install:
   mysql -e 'CREATE DATABASE blog'

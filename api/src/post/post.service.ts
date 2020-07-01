@@ -7,6 +7,7 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class PostService {
+  
   constructor(
     @InjectRepository(PostEntity)
     private postRepository: Repository<PostEntity>,
@@ -14,11 +15,20 @@ export class PostService {
     private userRepository: Repository<UserEntity>
   ){}
   async createPost(user: UserEntity,post: PostEntity){
-    const userRecord = await this.userRepository.findOneOrFail(user.id)
+    const userRecord = await this.userRepository.findOneOrFail({where:{firebaseUid: user.firebaseUid}})
     post.user = userRecord
     post.likesNumber = 0
     await this.postRepository.save(post)
   }
+  async deletePost(userFirebaseUid: any, postId: number) {
+    const userRecord = await this.userRepository.findOne({where:{firebaseUid: userFirebaseUid},relations:["posts"]})
+    await this.postRepository.createQueryBuilder()
+    .delete()
+    .from(PostEntity)
+    .where("id = :postId AND user = :userId",{postId,userId: userRecord.id})
+    .execute()
+  }
+  
   async allUserPosts(username: string){
     const userRecord = await this.userRepository.findOneOrFail({where:{username},relations: ["posts"]})
     return userRecord.posts

@@ -2,6 +2,7 @@ import { UserEntity } from './UserEntity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
+import * as admin from 'firebase-admin'
 import * as argon2 from 'argon2'
 
 @Injectable()
@@ -11,23 +12,21 @@ export class UserService {
     private userRepository: Repository<UserEntity>
     ){}
 
-    async findCredentialsByUsername(username: string){
-      return this.userRepository.findOne({
-        where: {username},
-        select: ['id','username','password']
-      })
-    }
-
     async findById(id: number){
       return this.userRepository.findOne({where:{id}})
     }
 
+    async findInFirebaseByUID(uid: string){
+      const userRecord = await admin.auth().getUser(uid)
+      return userRecord.toJSON()
+    }
+
+    async findInLocalByUID(uid: string){
+      const userRecord = await this.userRepository.findOne({where:{firebaseUid:uid}})
+      return userRecord
+    }
+
     async saveUser(user: UserEntity) {
-      const userHashed = new UserEntity()
-      userHashed.name = user.name
-      userHashed.username = user.username
-      userHashed.email = user.email
-      userHashed.password = await argon2.hash(user.password)
-      return this.userRepository.save(userHashed)
+      return this.userRepository.save(user)
     }
 }

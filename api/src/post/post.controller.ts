@@ -1,7 +1,7 @@
+import { FirebaseGuard } from '../guards/firebase.guard';
 import { UserEntity } from './../user/UserEntity';
-import { JwtAuthGuard } from './../auth/guards/jwt-auth.guard';
 import { PostService } from './post.service';
-import { Controller, UseGuards, Body, Request, Post, Get, Param, Query } from '@nestjs/common';
+import { Controller, UseGuards, Body, Request, Post, Get, Param, Query, Delete } from '@nestjs/common';
 import { PostFactory } from './PostFactory';
 import { Period } from './Period';
 
@@ -9,16 +9,24 @@ import { Period } from './Period';
 export class PostController {
   constructor(private postService: PostService){}
 
-  @UseGuards(JwtAuthGuard)
+  @UseGuards(FirebaseGuard)
   @Post()
   async createPost(@Request() req, @Body() body){
-    const userId = req.user
+    const userFirebaseUid = req.user
     const authenticatedUser = new UserEntity()
-    authenticatedUser.id = userId
+    authenticatedUser.firebaseUid = userFirebaseUid
     const post = PostFactory(body)
     this.postService.createPost(authenticatedUser,post)
   }
   
+  @UseGuards(FirebaseGuard)
+  @Delete(':postId')
+  async deletePost(@Request() req,@Param('postId') postIdParameter){
+    const userFirebaseUid = req.user
+    const postId = Number.parseInt(postIdParameter,10)
+    await this.postService.deletePost(userFirebaseUid,postId)
+  }
+
   @Get('/user/:username')
   async getPostsFromUsername(@Param('username') username){
     return this.postService.allUserPosts(username)

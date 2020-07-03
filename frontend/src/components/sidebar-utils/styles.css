@@ -1,0 +1,51 @@
+.leftList {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.leftList .item{
+  display: flex;
+  width: 250px;
+  border-radius: 3px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 500;
+  padding: 10px 10px;
+  list-style: none;
+  line-height: 20.7px;
+}
+  
+.leftList .item:hover {
+  background: rgba(222, 222, 222, 0.616);
+}
+
+.leftList .item span.notify{
+  margin-left: 15px;
+  background-color: rgba(128, 128, 128, 0.466);
+}
+          
+.leftList .icon {
+  margin-right: 7px;
+}
+
+.leftList .user {
+  padding-top: 10px;
+  height: 66px;
+  margin-bottom: 10px;
+}
+
+.leftList strong {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.leftList .user p {
+  font-size: 12px ;
+  font-weight: lighter;
+  line-height: 27px;
+}
+
+.leftList .imgMask {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}

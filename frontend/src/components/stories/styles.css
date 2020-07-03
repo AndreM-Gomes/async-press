@@ -1,0 +1,35 @@
+.stories {
+  margin-top: 150px;
+  grid-column: 3;
+  width: 277px;
+  line-height: 20.7px;
+}
+
+.stories h5 {
+  padding: 15px 0px ;
+}
+
+.storie-item {
+  width: 277px;
+  transition: 0.2s;
+  font-family: 'Roboto', sans-serif;
+  font-size: 17px;
+  padding: 10px 30px;
+  font-weight: 500;
+  color: #202428;
+}
+
+.storie-item li {
+  word-break: break-all;
+}
+
+.storie-item:hover {
+  background: #DEDEDE;
+}
+
+.stories button{
+  padding: 0px 20px ;
+  width: 277px;
+  height: 40px;
+  margin-top: 15px;
+}

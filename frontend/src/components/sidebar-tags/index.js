@@ -2,13 +2,11 @@ import React, {useEffect, useState}from 'react'
 
 import './styles.css'
 
-const Sidebar = () => {
+const SidebarTags = () => {
   const [hashLikedList, setHashLikedList] = useState([])
 
-
-  /*useEffect(()=> {
-    service.getHash().then(response => setHashLikedList(response.hashs))
-  })*/
+  useEffect(()=> {
+  })
 
   return (
       <section className='tags' >
@@ -23,4 +21,4 @@ const Sidebar = () => {
   )
 }
 
-export default Sidebar
+export default SidebarTags

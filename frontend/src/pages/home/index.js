@@ -10,18 +10,20 @@ import SidebarUtils from '../../components/sidebar-utils'
 import Stories from '../../components/stories'
 
 export default function Home() {
-  const [buttonClass, setButtonClass] = useState('feed-button')
+  const [activeButton, setActiveButton] = useState('Feed')
   const [postList, setPostList] = useState([])
   const [firstPost, setFirstPost] = useState([])
 
+  const buttonList = ['Feed', 'Week', 'Month', 'Year', 'Infinity', 'Latest']
 
   useEffect(()=>{
       api.get('/post/latest').then(response => {setPostList(response.data)})
   })
 
-  function handleClick(e){
-    
+  function handleClick(key){
+    setActiveButton(key)
   }
+
   return(
     <div className='container'>
         <Header/>
@@ -31,12 +33,9 @@ export default function Home() {
         <nav className='feed-bar'>
           <h3>Posts</h3>
             <ul>
-              <li><div className={buttonClass} value='feed' onClick={e =>handleClick(e.target.value)}>Feed</div></li>
-              <li><div className={buttonClass} value='week' onClick={e =>handleClick(e.target.value)}>Week</div></li>
-              <li><div className={buttonClass} value='Month' onClick={e =>handleClick(e.target.value)}>Month</div></li>
-              <li><div className={buttonClass} value='Year' onClick={e =>handleClick(e.target.value)}>Year</div></li>
-              <li><div className={buttonClass} value='Infinty' onClick={e =>handleClick(e.target.value)}>Infinity</div></li>
-              <li><div className={buttonClass} value='Latest' onClick={e =>handleClick(e.target.value)}>Latest</div></li>
+              {buttonList.map(key => 
+                <li><div className={`feed-button ${activeButton === key ? 'selected':''} `} key={key} onClick={() =>handleClick(key)}>{key}</div></li>
+              )}
             </ul>
         </nav>
         <div className='postList'>

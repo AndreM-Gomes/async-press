@@ -25,14 +25,14 @@
 
 form input {  
   position: relative;
-  margin-top: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   height: 50px;
-  width: 500px;
+  width: 300px;
   border-radius: 3px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   background: #F9FAFA;
   padding: 15px;
-  margin-bottom: 30px;
   font-family: 'Open sans', sans-serif;
   font-size: 18px;
 }

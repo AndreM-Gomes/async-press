@@ -1,5 +1,6 @@
 import { PostEntity } from './../post/PostEntity';
 import {Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne, ManyToMany} from "typeorm";
+import { TagEntity } from '../tag/TagEntity';
 
 @Entity()
 export class UserEntity {
@@ -21,4 +22,7 @@ export class UserEntity {
 
     @ManyToMany(type => PostEntity, postsLiked => postsLiked.usersLiked,{onDelete:"CASCADE"})
     postsLiked: PostEntity[]
+
+    @ManyToMany(type => TagEntity, tagsModerated => tagsModerated.moderators )
+    tagsModerated: TagEntity[];
 }

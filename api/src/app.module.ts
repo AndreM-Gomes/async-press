@@ -7,6 +7,7 @@ import { UserModule } from './user/user.module';
 import { ConfigModule } from '@nestjs/config'
 import { PostModule } from './post/post.module';
 import { LikeModule } from './like/like.module';
+import { TagModule } from './tag/tag.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { LikeModule } from './like/like.module';
     UserModule,
     PostModule,
     LikeModule,
+    TagModule,
   ],
   providers: [AppService],
   controllers: [AppController],

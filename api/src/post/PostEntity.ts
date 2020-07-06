@@ -1,3 +1,4 @@
+import { TagEntity } from './../tag/TagEntity';
 import { UserEntity } from './../user/UserEntity';
 import { Column, ManyToOne, Generated, CreateDateColumn, Index, AfterInsert, OneToMany, ManyToMany, JoinTable } from 'typeorm';
 import { PrimaryGeneratedColumn } from 'typeorm';
@@ -42,4 +43,7 @@ export class PostEntity {
   @ManyToMany(type => UserEntity, userLiked => userLiked.postsLiked,{onDelete:"CASCADE"})
   @JoinTable()
   usersLiked: UserEntity[]
+
+  @ManyToMany(type => TagEntity, tags => tags.postsTaged)
+  tags: TagEntity[];
 }

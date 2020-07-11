@@ -58,7 +58,7 @@ export class PostService {
     if(!post) throw new NotFoundException()
     return post
   }
-  private async latestPostsQuery(){
+  private latestPostsQuery(){
     return this.postRepository.createQueryBuilder('post')
     .innerJoinAndSelect('post.user','user')
     .innerJoinAndSelect('post.tags','tag')
@@ -69,11 +69,12 @@ export class PostService {
     return userRecord.posts
   }
   async latestPosts(page: number){
-    return (await this.latestPostsQuery())
+    return this.latestPostsQuery()
     .getMany()
+
   }
   async latestPostsWithTag(page: number, tagname: string){
-    return (await this.latestPostsQuery())
+    return await this.latestPostsQuery()
     .innerJoinAndSelect('post.tags','tagEntity','tagEntity.title = :tagname',{tagname})
     .getMany()
   }

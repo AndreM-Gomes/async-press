@@ -29,7 +29,7 @@ export class PostController {
     await this.postService.deletePost(userFirebaseUid,postId)
   }
 
-  @Get(':postId')
+  @Get('/id/:postId')
   async getPostId(@Param('postId') postIdParameter){
     const postId = Number.parseInt(postIdParameter,10)
     return this.postService.getPostById(postId)

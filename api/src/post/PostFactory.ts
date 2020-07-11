@@ -1,6 +1,7 @@
 import { PostEntity } from "./PostEntity"
+import { PostDTO } from "./PostDTO"
 
-export function PostFactory({id, title, minsToRead, content, likesNumber, user}: PostEntity){
+export function PostFactory({id, title, minsToRead, content, likesNumber, user}: PostDTO){
   const post = new PostEntity()
   post.id = id
   post.title = title

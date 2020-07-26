@@ -1,4 +1,3 @@
-
 .headerBar {
   display: flex;
   position: fixed;
@@ -24,17 +23,17 @@
   height: 38px;
   padding: 10px 10px;
   border-radius: 4px;
-  margin-right: 15px ;
+  margin-right: 15px;
 }
 
-.rigth-group {
+.right-group {
   display: flex;
   width: 300px;
   padding: 10px;
   justify-content: space-between;
 }
 
-.rigth-group .icon {
+.right-group .icon {
   margin-top: 7px;
 }
 .search-box {
@@ -43,17 +42,17 @@
   padding: 15px;
   border-radius: 3px;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  background: #F9FAFA;
+  background: #f9fafa;
 }
 
 .btnHeader {
   width: 120px;
   height: 40px;
   border: 0px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 16px;
   line-height: 24px;
-  font-weight: 600 ;
+  font-weight: 600;
 }
 
 .headerBar .imgMask {
@@ -63,15 +62,41 @@
 }
 
 .headerBar .left-group span {
-  background: url('../../assets/logo.svg') no-repeat;
+  background: url("../../assets/logo.svg") no-repeat;
   display: flex;
   flex-direction: row;
   width: 50px;
   height: 20px;
 }
 
-.rigth-group span.notify{
+.right-group span.notify {
   position: absolute;
-  margin-left: 12px; 
+  margin-left: 12px;
   background-color: red;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 2px;
+  background-color: white;
+  min-width: 160px;
+  padding: 5px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }

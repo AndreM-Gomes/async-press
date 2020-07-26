@@ -1,16 +1,26 @@
-import React from 'react';
-import Routes from './routes'
-import {fbInit} from './services/auth'
+import React from "react";
+import Routes from "./routes";
+import firebase from "firebase";
 
-import './global.css'
+import { fbInit } from "./services/auth";
+
+import "./global.css";
 
 function App() {
+  fbInit();
 
-  fbInit()
-  
+  firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+      user.getIdToken(true).then(function (idToken) {
+        localStorage.setItem("token", idToken);
+      });
+    } else {
+    }
+  });
+
   return (
-    <div className='App'>
-      <Routes/>
+    <div className="App">
+      <Routes />
     </div>
   );
 }

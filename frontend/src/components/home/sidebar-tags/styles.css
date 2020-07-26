@@ -5,7 +5,7 @@
 }
 
 .tags h5 {
-  padding: 15px 0px ;
+  padding: 15px 0px;
 }
 
 .tags .tag-item {
@@ -13,12 +13,12 @@
   padding: 10px;
   list-style: none;
   transition: 0.2s;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 15px;
   font-weight: 500;
   color: #202428;
 }
 
 .tag-item:hover {
-  background: #DEDEDE;
+  background: #dedede;
 }

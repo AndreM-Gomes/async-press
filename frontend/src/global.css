@@ -3,11 +3,12 @@
   padding: 0;
   box-sizing: border-box;
   list-style: none;
+  text-decoration: none;
 }
 
-body{
-  background: #EEF0F1;
-  font-family: 'Open sans', sans-serif;
+body {
+  background: #eef0f1;
+  font-family: "Open sans", sans-serif;
 }
 
 button {
@@ -17,8 +18,8 @@ button {
 }
 
 .main {
-  color: #FFFFFF;
-  background: #3B49DF;
+  color: #ffffff;
+  background: #3b49df;
 }
 
 .imgMask {
@@ -26,12 +27,12 @@ button {
 }
 
 .card {
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 3px;
-  box-shadow: 0px 1px 4px rgba(0,0,0,0.25);
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
 }
 
-span.notify{
+span.notify {
   height: 18px;
   width: 13px;
   border-radius: 3px;

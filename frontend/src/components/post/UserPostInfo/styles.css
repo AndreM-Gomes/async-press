@@ -1,0 +1,33 @@
+.user-post-info {
+  width: 350px;
+  height: 450px;
+  margin-right: 0px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-top: 32px blue solid;
+}
+
+.user-post-info .header {
+  display: flex;
+}
+
+.user-post-info .header .imgMask {
+  z-index: 1;
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
+}
+
+.user-post-info .header h4 {
+  margin-top: 20px;
+}
+
+.user-post-info p {
+  line-height: 25px;
+}
+
+.user-post-info button {
+  height: 40px;
+}

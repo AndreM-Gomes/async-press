@@ -1,0 +1,26 @@
+.post-page {
+  padding: 50px;
+  box-sizing: content-box;
+  width: 50vw;
+  min-height: 150vh;
+  margin-bottom: 20px;
+}
+
+.post h1 {
+  margin-bottom: 30px;
+}
+
+.post .post-tags {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.post .post-tags li {
+  margin-right: 20px;
+  height: 25px;
+}
+
+.post .imgMask {
+  width: 35px;
+  height: 35px;
+}

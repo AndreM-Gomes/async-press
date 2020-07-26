@@ -54,9 +54,3 @@ export default function Write()  {
           </div>
         </div>
       </div>
-    )
-  }else {
-    history.push('/register')
-    return null
-  }
-}

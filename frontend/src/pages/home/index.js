@@ -58,7 +58,7 @@ export default function Home() {
       </nav>
       <div className="postList">
         {postList
-          .filter((post) => post.index === 0)
+          .filter((post, i) => i === 0)
           .map((postFil) => (
             <div className="card post post_1" key={postFil.id}>
               <div className="mask"></div>

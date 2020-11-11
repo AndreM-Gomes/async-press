@@ -11,19 +11,18 @@
   height: 40px;
   margin-top: 30px;
   margin-bottom: 30px;
-  font-family: 'Open sans', sans-serif;
+  font-family: "Open sans", sans-serif;
   font-size: 18px;
 }
 
-.link{
+.link {
   text-decoration: none;
-  font-family: 'Open sans', sans-serif;
+  font-family: "Open sans", sans-serif;
   font-size: 16px;
-  color: #3B49DF;
+  color: #3b49df;
 }
 
-
-form input {  
+form input {
   position: relative;
   margin-top: 5px;
   margin-bottom: 5px;
@@ -31,10 +30,8 @@ form input {
   width: 300px;
   border-radius: 3px;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  background: #F9FAFA;
+  background: #f9fafa;
   padding: 15px;
-  font-family: 'Open sans', sans-serif;
+  font-family: "Open sans", sans-serif;
   font-size: 18px;
 }
-
-

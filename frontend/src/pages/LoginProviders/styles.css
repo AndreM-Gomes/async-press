@@ -27,6 +27,38 @@
   height: 50px;
   align-items: center;
 }
+.register button.Github span {
+  background-image: url("../../assets/github.svg");
+}
+
+.register button.Google span {
+  background-image: url("../../assets/Google.svg");
+}
+
+.register button.Facebook span {
+  background-image: url("../../assets/facebook.svg");
+}
+.register button.Facebook span {
+  background-image: url("../../assets/facebook.svg");
+}
+.register button.Email span {
+  background-image: url("../../assets/email.svg");
+}
+.register button.Google {
+  background-color: white;
+}
+.register button.Facebook {
+  background-color: #087bea;
+  color: white;
+}
+.register button.Github {
+  background-color: rgb(24, 24, 24);
+  color: white;
+}
+.register button.Email {
+  background-color: rgb(236, 34, 34);
+  color: white;
+}
 
 button .colored {
   background-color: black;
@@ -47,8 +79,4 @@ button .colored {
 
 .input-group input {
   width: 230px;
-}
-
-form .field-group .field + .field {
-  margin-left: 24px;
 }

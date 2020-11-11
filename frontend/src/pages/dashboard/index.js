@@ -1,23 +1,7 @@
-import React from 'react'
-import {useHistory} from 'react-router-dom'
-import firebase from 'firebase'
+import React from "react";
 
-import './styles.css'
+import "./styles.css";
 
-
-export default function Dashboard(){
-
-  const user = firebase.auth().currentUser
-  
-  const history = useHistory()
-  
-  if(user){
-    return(
-      <div>
-      </div>
-    )
-  }else{
-    history.push('/register')
-    return null
-  }
+export default function Dashboard() {
+  return <div></div>;
 }
